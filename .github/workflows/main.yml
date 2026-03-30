@@ -1,0 +1,38 @@
+name: Build and Deploy AsciiDoc to GitHub Pages
+
+on:
+  push:
+    branches: [main]  # o "master", según tu rama
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby (for Asciidoctor)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install Asciidoctor
+        run: gem install asciidoctor
+
+      - name: Convert .adoc to .html
+        run: |
+          mkdir output
+          asciidoctor -o output/index.html ./resumen.adoc
+          cp ./daro-dark.css output/daro-dark.css
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
