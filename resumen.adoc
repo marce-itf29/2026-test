@@ -7,7 +7,509 @@
 
 = TEST / QA
 
+
+== Links
+
+ppts: https://drive.google.com/drive/folders/1tJqvvOpZccptvE-xbIwx4sy_QIBMw5Sn
+
 == Semana 1
 
-=== Subtitulo
+= Semana 1
+
+== 1. Comenzamos con un código con errores
+
+En el desarrollo de software es común comenzar con código que contiene errores. Estos errores pueden surgir por múltiples razones: mala interpretación de requisitos, errores lógicos, problemas de integración o incluso descuidos simples.
+
+El objetivo del testing no es demostrar que el software funciona perfectamente, sino encontrar la mayor cantidad de fallas posibles antes de que el sistema llegue a producción.
+
+---
+
+== 2. Introducción
+
+Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, ya que contribuyen significativamente al éxito y la confiabilidad de los proyectos.
+
+Estos procesos:
+
+* Son actividades sistemáticas y planificadas que se realizan durante todo el ciclo de desarrollo.
+* Tienen como objetivo verificar y validar que el software cumple con los requisitos especificados.
+* Requieren seleccionar técnicas y herramientas adecuadas según el contexto del proyecto.
+
+---
+
+== 3. Principios de testing
+
+=== 3.1. Principio 1: Definir
+Es importante definir claramente qué se va a probar, estableciendo objetivos y alcance.
+
+=== 3.2. Principio 2: Evitar
+Se deben evitar pruebas redundantes o innecesarias que no aporten valor.
+
+=== 3.3. Principio 3: Probar
+El testing debe realizarse de manera sistemática y constante durante todo el desarrollo.
+
+=== 3.4. Principio 4: Inspeccionar
+Se deben revisar los artefactos del sistema (código, documentación, diseño) para detectar errores.
+
+=== 3.5. Principio 5: Escribir
+Los casos de prueba deben documentarse claramente.
+
+=== 3.6. Principio 6: Examinar
+Se deben analizar los resultados de las pruebas cuidadosamente.
+
+=== 3.7. Principio 7: No improvisar
+Las pruebas deben planificarse y no ejecutarse de forma improvisada.
+
+=== 3.8. Principio 8: Asumir
+Se debe asumir que el sistema tiene errores y diseñar pruebas para encontrarlos.
+
+=== 3.9. Principio 9: Encontrar
+El objetivo principal es encontrar fallas, no confirmar que todo funciona.
+
+=== 3.10. Principio 10: Ser creativos
+Las pruebas deben ser creativas para descubrir escenarios no evidentes.
+
+---
+
+== 4. Proceso de testing
+
+=== 4.1. Planificación de la prueba
+
+La actividad de prueba comienza temprano en el desarrollo, generalmente durante la fase de análisis.
+
+Se definen lineamientos como:
+
+* Si las pruebas serán manuales o automatizadas.
+* Estimación de recursos (tiempo, dinero, personas).
+* Evaluación de herramientas y datos de prueba disponibles.
+
+También se define la cobertura de pruebas y el orden de ejecución:
+
+* Primero pruebas unitarias, luego integración.
+* Se pueden realizar pruebas incrementales.
+
+El plan de pruebas sirve como guía general, no como detalle exhaustivo.
+
+Se mantiene un registro de pruebas para asegurar trazabilidad y mejorar procesos futuros.
+
+---
+
+=== 4.2. Identificación de la prueba
+
+En esta etapa se determina qué debe probarse con mayor detalle.
+
+Se identifican:
+
+* Componentes críticos.
+* Funcionalidades clave.
+* Casos relevantes para el negocio.
+
+También se preparan los recursos necesarios:
+
+* Datos de prueba
+* Configuración de entornos
+* Herramientas
+
+Cuando los recursos son limitados, se priorizan las pruebas con mayor probabilidad de detectar fallas importantes.
+
+---
+
+=== 4.3. Especificación de la prueba
+
+Se documenta cómo se ejecutarán las pruebas:
+
+* Descripción general del test
+* Pasos detallados
+* Condiciones necesarias (hardware, software)
+* Resultados esperados
+* Criterios de aprobación
+
+El objetivo es que cualquier persona pueda ejecutar la prueba sin ambigüedades.
+
+También se preparan reportes para registrar resultados.
+
+---
+
+=== 4.4. Ejecución de las pruebas
+
+Se ejecutan las pruebas según lo especificado.
+
+Características clave:
+
+* Se intenta ejecutar pruebas en paralelo cuando es posible.
+* Se pueden realizar manual o automáticamente.
+* Si una prueba falla:
+  - Se registra el error
+  - Se analiza
+  - Se corrige
+  - Se vuelve a ejecutar
+
+Al finalizar:
+
+* Se analizan resultados
+* Se generan reportes
+* Se identifican cuellos de botella
+
+---
+
+=== 4.5. Análisis de error
+
+Cuando ocurre una falla, se analiza su causa:
+
+* ¿Se ejecutó correctamente el test?
+* ¿El problema está en los datos?
+* ¿El error es del sistema?
+
+Si la falla no pertenece al test, se repite la prueba.
+
+Este paso es clave para evitar falsos positivos.
+
+---
+
+=== 4.6. Finalización de las pruebas
+
+Si luego de repetir las pruebas no se detectan errores, el proceso se da por finalizado.
+
+---
+
+== 5. Enfoques y procesos claves de un software
+
+Los procesos de testing son fundamentales porque:
+
+* Permiten validar el comportamiento esperado del software.
+* Aumentan la confiabilidad del sistema.
+* Ayudan a detectar errores tempranamente.
+
+---
+
+== 6. Verificación y validación
+
+La verificación y validación (V&V) aseguran que el software cumple con lo esperado.
+
+* Verificación: ¿Estamos construyendo el producto correctamente?
+  - Se enfoca en requisitos y especificaciones.
+
+* Validación: ¿Estamos construyendo el producto correcto?
+  - Se enfoca en expectativas del usuario.
+
+Ambas son complementarias.
+
+---
+
+== 7. Enfoques de pruebas
+
+Existen dos enfoques principales:
+
+=== Enfoque estático
+
+* No requiere ejecutar el software.
+* Analiza documentación, diseño y código.
+* Detecta errores tempranos.
+
+=== Enfoque dinámico
+
+* Requiere ejecutar el software.
+* Evalúa comportamiento real.
+* Detecta fallas funcionales y de rendimiento.
+
+---
+
+=== 7.1. ¿En qué se diferencian los enfoques?
+
+[cols="1,1"]
+|===
+|Enfoque estático |Enfoque dinámico
+
+|Se realiza antes de ejecutar el sistema
+|Se realiza durante la ejecución
+
+|Analiza documentos y código
+|Analiza comportamiento
+
+|Previene errores tempranos
+|Detecta fallas reales
+|===
+
+---
+
+== 8. Un escenario posible para un ciclo de desarrollo y despliegue de software
+
+=== 8.1. Entorno de desarrollo
+
+Es donde los desarrolladores escriben y prueban el código.
+
+Características:
+
+* No está conectado a producción
+* Permite cambios libres
+* Uso local o servidor compartido
+
+---
+
+=== 8.2. Entorno de prueba o testing
+
+Es donde se ejecutan pruebas controladas.
+
+Características:
+
+* Replica producción parcialmente
+* Permite detectar errores antes de liberar
+
+---
+
+=== 8.3. Entorno de pre-producción o staging
+
+Es una simulación casi real de producción.
+
+Características:
+
+* Similar a producción
+* Se realizan pruebas finales
+
+---
+
+=== 8.4. Entorno de producción
+
+Es el entorno real donde el usuario utiliza el sistema.
+
+Características:
+
+* Alta confiabilidad
+* Manejo de datos reales
+* Alto impacto ante errores
+
+---
+
+== 9. Niveles y tipos de pruebas
+
+Las pruebas se organizan en distintos niveles según qué parte del sistema se evalúa.
+
+---
+
+== 10. ¿Cuáles son los niveles de pruebas?
+
+=== 10.1. Pruebas unitarias
+
+Se enfocan en componentes individuales.
+
+Ventajas:
+
+* Rápidas
+* Detectan errores específicos
+* Fácil automatización
+
+Ejemplo:
+
+[source,java]
+----
+public int sumar(int a, int b) {
+    return a + b;
+}
+----
+
+---
+
+=== 10.2. Pruebas de integración
+
+Verifican la interacción entre componentes.
+
+* Detectan errores en la comunicación entre módulos.
+* Pueden ser top-down o bottom-up.
+
+---
+
+=== 10.3. Pruebas de sistemas
+
+Evalúan el sistema completo.
+
+* Incluyen pruebas funcionales y de rendimiento.
+* Simulan escenarios reales.
+
+---
+
+=== 10.4. Pruebas de aceptación
+
+Se realizan en condiciones reales.
+
+* Validan que el sistema cumple con lo esperado por el usuario.
+* Incluyen pruebas alfa y beta.
+
+---
+
+== 11. Tipos de pruebas
+
+Existen múltiples tipos de pruebas:
+
+* Tests de operación
+* Tests de performance
+* Tests de escala
+* Tests de sobrecarga
+* Tests negativos
+* Tests basados en requerimientos
+* Tests ergonómicos
+* Tests de documentación
+* Tests de aceptación
+
+Cada tipo aborda un aspecto distinto del sistema y, en conjunto, permiten asegurar su calidad.
+
+
+== Semana 4 - Clase Sincrónica
+
+=== Bug Advocacy
+
+Cuando un tester o un equipo de pruebas encuentra un defecto en el software, el bug advocacy implica comunicar de manera efectiva la importancia y las implicaciones del error a los desarrolladores y otras partes interesadas en el proyecto.
+
+Esto puede implicar proporcionar información detallada sobre cómo reproducir el error, los posibles efectos secundarios que puede tener en el sistema y cualquier otro detalle relevante que ayude a priorizar y resolver el problema de manera eficiente.
+
+El objetivo del bug advocacy es garantizar que los errores críticos se aborden de manera oportuna y efectiva, lo que contribuye a mejorar la calidad y la fiabilidad del software final.
+
+Una comunicación clara y una colaboración efectiva entre los equipos de pruebas y desarrollo son fundamentales para el éxito de esta práctica.
+
+---
+
+=== Conceptos importantes de Bug Advocacy
+
+Dentro de la filosofía Bug Advocacy, existen 3 elementos muy importantes:
+
+* *Calidad:* El profesor Gerald “Jerry” Weinberg define la calidad como el valor para alguien. La filosofía Bug Advocacy involucra hacer énfasis en el valor del software perdido debido a los errores y defectos.
+
+* *Clientes:* Las diferentes personas con interés en un software en particular tienen diferentes percepciones de qué es valioso y qué no. Un cliente externo no necesariamente percibe como valioso lo que sí es valioso para un cliente interno. La filosofía Bug Advocacy implica mirar el software considerando todas las perspectivas.
+
+* *Éxito del producto:* El éxito a largo plazo de un producto viene de la aceptación de sus usuarios y de decisiones conscientes. La filosofía de Bug Advocacy nos permitirá mostrar la información de los problemas y errores de forma que los involucrados en el desarrollo de un software puedan tomar esas decisiones de forma consciente y bien informadas.
+
+---
+
+=== Bug Advocacy en etapas tempranas
+
+Identificar diferentes errores y defectos en las etapas tempranas del desarrollo nos dará una ventaja cuando aboguemos por los errores.
+
+Es muy fácil defender el arreglo de los siguientes tipos de errores en estas etapas:
+
+* Problemas de diseño.
+* Problemas de experiencia de usuario (UX) e interfaz de usuario (UI).
+* Problemas de usabilidad.
+
+---
+
+=== Bug Advocacy en etapas tardías
+
+Este es el momento de concentrarnos en los problemas más grandes y los errores críticos.
+
+Los problemas mencionados en etapas tempranas no serán priorizados por el equipo de desarrollo debido a la cercanía de las fechas de entrega.
+
+Lo que debemos hacer es convencer a los desarrolladores de que deben utilizar su tiempo resolviendo y arreglando nuestro error (el error es responsabilidad de todo el equipo), en vez de desarrollar nuevas funcionalidades.
+
+Debemos hacer notar nuestro error y abogar por su corrección.
+
+---
+
+=== Responsabilidad sobre los errores
+
+El error que encontramos es responsabilidad de todos, no solo del desarrollador.
+
+Es nuestra responsabilidad asegurarnos de que se le dé la atención necesaria.
+
+Cuando ejecutamos pruebas y encontramos fallas, muchas veces encontramos un síntoma y no el error real.
+
+Por eso debemos hacer seguimiento del error antes de reportarlo para validar si es:
+
+* Más serio de lo que aparenta.
+* Más general de lo que aparenta.
+
+---
+
+=== Error 1
+
+Cuando encontramos un error o defecto de programación, significa que el software está en un estado distinto al esperado.
+
+El Dr. Cem Kaner propone tres tipos de seguimiento:
+
+* Variar el comportamiento (cambiar pasos del caso de prueba).
+* Variar configuraciones del programa (cambiar precondiciones).
+* Variar el entorno (software/hardware).
+
+---
+
+=== Error 2: "En mi máquina funciona"
+
+Los errores que no ocurren en la máquina del desarrollador tienen menos credibilidad.
+
+Idealmente, las pruebas deben realizarse en diferentes máquinas.
+
+Esto permite:
+
+* Verificar si el error depende de la configuración.
+* Validar que los pasos de reproducción sean correctos.
+
+---
+
+=== Reportes claros
+
+Los errores deben reportarse siempre, incluso si son difíciles de reproducir.
+
+Los reportes deben ser:
+
+* Claros
+* Simples
+* Concisos
+
+También es importante:
+
+* Incluir herramientas utilizadas.
+* Validar el reporte con otros testers.
+
+---
+
+=== Ejemplo de error
+
+==== Reporte sin bug advocacy
+
+"No funciona el botón de guardar."
+
+==== Reporte con bug advocacy
+
+"Al presionar 'Guardar' en el formulario de clientes (paso 3 del flujo), la aplicación lanza un error 500. Esto impide registrar nuevos clientes y afecta el proceso de ventas. Ocurre en Chrome y Edge."
+
+---
+
+=== Ejemplo de error completo
+
+*ID:* TC-05  
+*Nombre:* Ingreso al sistema con credenciales válidas  
+
+*Pasos:*
+
+* Abrir la aplicación.
+* Ingresar usuario válido.
+* Ingresar contraseña válida.
+* Presionar "Iniciar sesión".
+
+*Resultado esperado:* El sistema muestra la pantalla principal.  
+
+*Resultado real:* Aparece mensaje "Error inesperado".  
+
+*Estado:* Fallido → ver Bug #101
+
+---
+
+=== Ejemplo de reporte de bug
+
+*ID:* Bug-101  
+
+*Título:* Error inesperado al iniciar sesión con credenciales válidas.  
+
+*Severidad:* Alta (bloquea ingreso de usuarios).  
+
+*Prioridad:* Crítica (impide uso del sistema).  
+
+*Pasos para reproducir:*
+
+* Abrir la aplicación.
+* Usuario: juan@test.com
+* Contraseña: 123456
+* Clic en "Iniciar sesión".
+
+*Resultado real:* Aparece mensaje "Error inesperado".  
+
+*Resultado esperado:* Ingreso correcto y carga de pantalla principal.
+
 
