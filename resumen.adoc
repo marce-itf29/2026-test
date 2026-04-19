@@ -94,12 +94,9 @@ Para detectar estos problemas se utilizan *casos de prueba*, que son la base del
 * condiciones previas (precondiciones),
 * pasos a ejecutar,
 * resultados esperados.
-
-Los casos de prueba permiten:
-
-* guiar la ejecución de las pruebas,
-* verificar si se cumple un requerimiento específico,
-* evaluar el comportamiento del sistema bajo condiciones definidas.
+* están desarrollados para probar el software en ciertas condiciones específicas; 
+* sirven para establecer una ruta a seguir a la hora de probar el software y 
+* evaluar si se cumple un requerimiento en específico.
 
 
 === 3. Principios de testing
