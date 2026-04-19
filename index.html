@@ -399,25 +399,70 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="sect2">
 <h3 id="_2_introducción">2. Introducción</h3>
 <div class="paragraph">
-<p>Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, ya que contribuyen significativamente al éxito y la confiabilidad de los proyectos.</p>
+<p>El <strong>testing de software</strong> es un proceso (o conjunto de procesos) cuyo objetivo es asegurar que un sistema se comporte como se espera: que haga lo que debe hacer y que no haga lo que no corresponde. El software debe ser <strong>predecible y consistente</strong>, sin generar comportamientos inesperados para el usuario.</p>
 </div>
 <div class="paragraph">
-<p>Estos procesos:</p>
+<p>En un escenario ideal, se probarían todas las combinaciones posibles de entradas y salidas de un programa. Sin embargo, esto no es viable en la práctica debido a la gran cantidad de combinaciones, el tiempo requerido y el costo asociado. Por eso, el testing se basa en seleccionar casos representativos que maximicen la detección de errores.</p>
+</div>
+<div class="paragraph">
+<p>El objetivo del testing no es únicamente verificar que “no haya errores”, sino <strong>aumentar la calidad y confiabilidad del software</strong>. Esto implica asumir que el sistema puede tener fallas y diseñar pruebas para encontrarlas.</p>
+</div>
+<div class="paragraph">
+<p>En términos simples:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+El testing es el proceso de ejecutar un programa con la intención de encontrar errores.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Cuando realizamos testing buscamos:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Son actividades sistemáticas y planificadas que se realizan durante todo el ciclo de desarrollo.</p>
+<p><strong>Errores</strong>: problemas introducidos durante la construcción del software (por ejemplo, en requisitos o diseño).</p>
 </li>
 <li>
-<p>Tienen como objetivo verificar y validar que el software cumple con los requisitos especificados.</p>
-</li>
-<li>
-<p>Requieren seleccionar técnicas y herramientas adecuadas según el contexto del proyecto.</p>
+<p><strong>Defectos</strong>: fallas que se manifiestan en etapas posteriores, especialmente durante la ejecución o pruebas.</p>
 </li>
 </ul>
 </div>
-<hr>
+<div class="paragraph">
+<p>Para detectar estos problemas se utilizan <strong>casos de prueba</strong>, que son la base del testing. Un caso de prueba incluye:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>valores de entrada,</p>
+</li>
+<li>
+<p>condiciones previas (precondiciones),</p>
+</li>
+<li>
+<p>pasos a ejecutar,</p>
+</li>
+<li>
+<p>resultados esperados.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Los casos de prueba permiten:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>guiar la ejecución de las pruebas,</p>
+</li>
+<li>
+<p>verificar si se cumple un requerimiento específico,</p>
+</li>
+<li>
+<p>evaluar el comportamiento del sistema bajo condiciones definidas.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_3_principios_de_testing">3. Principios de testing</h3>
@@ -1327,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-19 18:57:53 UTC
+Last updated 2026-04-19 19:10:29 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
