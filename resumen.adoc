@@ -5,8 +5,45 @@
 :stem: 
 :stylesheet: daro-dark.css
 
-= TEST / QA
+++++
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+  
+  // Find all TOC items with children
+  const tocItems = toc.querySelectorAll('li');
+  
+  tocItems.forEach(function(item) {
+    const childList = item.querySelector('ul');
+    if (childList) {
+      // Start with first level expanded, others collapsed
+      const isTopLevel = !item.parentElement.closest('li');
+      if (isTopLevel) {
+        item.classList.add('expanded');
+      }
+      
+      const link = item.querySelector('a');
+      if (link) {
+        link.addEventListener('click', function(e) {
+          // Only toggle if clicking the arrow area or if item has children
+          const rect = link.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          
+          // Toggle on any click for items with children
+          if (childList) {
+            e.preventDefault();
+            item.classList.toggle('expanded');
+          }
+        });
+      }
+    }
+  });
+});
+</script>
+++++
 
+= TEST / QA
 
 == Links
 
@@ -14,7 +51,6 @@ ppts: https://drive.google.com/drive/folders/1tJqvvOpZccptvE-xbIwx4sy_QIBMw5Sn
 
 == Semana 1
 
-= Semana 1
 
 == 1. Comenzamos con un código con errores
 
