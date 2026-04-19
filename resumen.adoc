@@ -102,19 +102,90 @@ Para detectar estos problemas se utilizan *casos de prueba*, que son la base del
 === 3. Principios de testing
 
 ==== 3.1. Principio 1: Definir
-Es importante definir claramente qué se va a probar, estableciendo objetivos y alcance.
+
+Una parte fundamental de un caso de prueba es la *definición del resultado esperado*.
+
+Aunque pueda parecer obvio, no definir claramente el resultado esperado es un error frecuente. Si no está especificado, un resultado incorrecto podría interpretarse como válido.
+
+Para evitar esto, todo caso de prueba debe incluir:
+
+. *Descripción de las entradas*: datos que se utilizarán en la prueba.
+. *Resultado esperado*: comportamiento o salida exacta que debería producir el sistema.
+
+[NOTE]
+====
+Un caso de prueba sin resultado esperado no permite determinar si el sistema funciona correctamente.
+====
 
 ==== 3.2. Principio 2: Evitar
-Se deben evitar pruebas redundantes o innecesarias que no aporten valor.
+
+Un programador debe evitar probar su propio programa.
+
+Intentar evaluar el propio trabajo no suele ser efectivo. La persona que desarrolló el código sabe lo que quiso hacer, por lo que le cuesta reconocer cuándo el sistema hace algo diferente a lo esperado.
+
+Además, existe una tendencia natural a no querer encontrar errores en el propio trabajo, lo que dificulta un análisis crítico.
+
+También puede ocurrir que los errores provengan de una mala comprensión de los requerimientos o del negocio. En esos casos, el desarrollador difícilmente detectará el problema, ya que parte de la misma interpretación.
+
+Por estas razones, se establece este principio:
+
+[NOTE]
+====
+Una persona puede probar su propio código, pero no lo hará de forma tan efectiva como otra.
+
+Sin embargo, una vez detectados los errores, es recomendable que el desarrollador que escribió el programa sea quien los corrija.
+====
 
 ==== 3.3. Principio 3: Probar
-El testing debe realizarse de manera sistemática y constante durante todo el desarrollo.
+
+Una organización de programación no debería probar sus propios programas.
+
+Este principio extiende la idea del anterior. No solo las personas tienen dificultades para evaluar su propio trabajo, sino también las organizaciones.
+
+Las empresas de desarrollo suelen tener objetivos centrados en *tiempos de entrega* y *costos*. Estos son fáciles de medir, a diferencia de la calidad o la confiabilidad del software.
+
+Debido a esto, puede ocurrir que las pruebas no se enfoquen realmente en encontrar errores, ya que detectarlos puede implicar retrasos y mayores costos.
+
+[NOTE]
+====
+Los objetivos de una organización no están orientados a la fiabilidad ni a la calidad del software, es probable que no hagan pruebas que realmente encuentren errores, ya que encontrar errores suele retrasar los tiempos de entrega y aumentar los costos de un proyecto. 
+====
 
 ==== 3.4. Principio 4: Inspeccionar
-Se deben revisar los artefactos del sistema (código, documentación, diseño) para detectar errores.
+
+===  proceso de pruebas debe incluir una *inspección de los resultados* de cada prueba.
+
+Esto implica:
+
+* analizar los resultados para verificar que las pruebas se están ejecutando correctamente (Si no rompe, no quiere decir que funciona).
+* confirmar que los defectos detectados sean realmente errores. (Verificar que no haya falsos positivos).
+* asegurarse de que se está encontrando la mayor cantidad posible de fallas. (Si no se encuentra ningún error, es probable que las pruebas no estén diseñadas para detectarlos).
+
+Cuando se realizan múltiples rondas de pruebas, es común que en las últimas aparezcan defectos que no fueron detectados en las primeras.
+
+[NOTE]
+====
+La inspección de resultados es clave para validar la calidad del testing. No basta con ejecutar pruebas, es necesario analizar sus resultados de forma crítica.
+====
 
 ==== 3.5. Principio 5: Escribir
-Los casos de prueba deben documentarse claramente.
+
+Los casos de prueba deben escribirse tanto para *condiciones de entrada válidas y esperadas*, como para *condiciones inválidas e inesperadas*.
+
+Existe una tendencia natural a centrarse únicamente en los casos correctos y evitar probar situaciones que generen errores. Sin embargo, muchos defectos aparecen justamente en condiciones no previstas durante el desarrollo.
+
+Por este motivo, es necesario definir casos de prueba que contemplen:
+
+* entradas válidas (comportamiento esperado),
+* entradas inválidas (errores),
+* entradas inesperadas (uso incorrecto del sistema).
+
+Muchos problemas del software se detectan cuando los usuarios lo utilizan de formas no previstas. Por eso, quien prueba debe intentar anticipar estos escenarios y pensar como un usuario real.
+
+[NOTE]
+====
+Las pruebas más efectivas no solo verifican que el sistema funcione bien, sino que también validan cómo se comporta ante errores y usos incorrectos.
+====
 
 ==== 3.6. Principio 6: Examinar
 Se deben analizar los resultados de las pruebas cuidadosamente.
