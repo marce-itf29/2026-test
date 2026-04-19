@@ -233,11 +233,12 @@ a {
 <li><a href="#_test_qa">TEST / QA</a>
 <ul class="sectlevel1">
 <li><a href="#_links">Links</a></li>
-<li><a href="#_semana_1">Semana 1</a></li>
+<li><a href="#_semana_1">Semana 1</a>
+<ul class="sectlevel2">
 <li><a href="#_1_comenzamos_con_un_código_con_errores">1. Comenzamos con un código con errores</a></li>
 <li><a href="#_2_introducción">2. Introducción</a></li>
 <li><a href="#_3_principios_de_testing">3. Principios de testing</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
 <li><a href="#_3_1_principio_1_definir">3.1. Principio 1: Definir</a></li>
 <li><a href="#_3_2_principio_2_evitar">3.2. Principio 2: Evitar</a></li>
 <li><a href="#_3_3_principio_3_probar">3.3. Principio 3: Probar</a></li>
@@ -251,7 +252,7 @@ a {
 </ul>
 </li>
 <li><a href="#_4_proceso_de_testing">4. Proceso de testing</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
 <li><a href="#_4_1_planificación_de_la_prueba">4.1. Planificación de la prueba</a></li>
 <li><a href="#_4_2_identificación_de_la_prueba">4.2. Identificación de la prueba</a></li>
 <li><a href="#_4_3_especificación_de_la_prueba">4.3. Especificación de la prueba</a></li>
@@ -261,16 +262,19 @@ a {
 </ul>
 </li>
 <li><a href="#_5_enfoques_y_procesos_claves_de_un_software">5. Enfoques y procesos claves de un software</a></li>
-<li><a href="#_6_verificación_y_validación">6. Verificación y validación</a></li>
-<li><a href="#_7_enfoques_de_pruebas">7. Enfoques de pruebas</a>
+</ul>
+</li>
+<li><a href="#_6_verificación_y_validación">6. Verificación y validación</a>
 <ul class="sectlevel2">
+<li><a href="#_7_enfoques_de_pruebas">7. Enfoques de pruebas</a>
+<ul class="sectlevel3">
 <li><a href="#_enfoque_estático">Enfoque estático</a></li>
 <li><a href="#_enfoque_dinámico">Enfoque dinámico</a></li>
 <li><a href="#_7_1_en_qué_se_diferencian_los_enfoques">7.1. ¿En qué se diferencian los enfoques?</a></li>
 </ul>
 </li>
 <li><a href="#_8_un_escenario_posible_para_un_ciclo_de_desarrollo_y_despliegue_de_software">8. Un escenario posible para un ciclo de desarrollo y despliegue de software</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
 <li><a href="#_8_1_entorno_de_desarrollo">8.1. Entorno de desarrollo</a></li>
 <li><a href="#_8_2_entorno_de_prueba_o_testing">8.2. Entorno de prueba o testing</a></li>
 <li><a href="#_8_3_entorno_de_pre_producción_o_staging">8.3. Entorno de pre-producción o staging</a></li>
@@ -279,7 +283,7 @@ a {
 </li>
 <li><a href="#_9_niveles_y_tipos_de_pruebas">9. Niveles y tipos de pruebas</a></li>
 <li><a href="#_10_cuáles_son_los_niveles_de_pruebas">10. ¿Cuáles son los niveles de pruebas?</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
 <li><a href="#_10_1_pruebas_unitarias">10.1. Pruebas unitarias</a></li>
 <li><a href="#_10_2_pruebas_de_integración">10.2. Pruebas de integración</a></li>
 <li><a href="#_10_3_pruebas_de_sistemas">10.3. Pruebas de sistemas</a></li>
@@ -287,6 +291,8 @@ a {
 </ul>
 </li>
 <li><a href="#_11_tipos_de_pruebas">11. Tipos de pruebas</a></li>
+</ul>
+</li>
 <li><a href="#_semana_4_clase_sincrónica">Semana 4 - Clase Sincrónica</a>
 <ul class="sectlevel2">
 <li><a href="#_bug_advocacy">Bug Advocacy</a></li>
@@ -360,12 +366,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="sect1">
 <h2 id="_semana_1">Semana 1</h2>
 <div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_1_comenzamos_con_un_código_con_errores">1. Comenzamos con un código con errores</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_comenzamos_con_un_código_con_errores">1. Comenzamos con un código con errores</h3>
 <div class="paragraph">
 <p>En el desarrollo de software es común comenzar con código que contiene errores. Estos errores pueden surgir por múltiples razones: mala interpretación de requisitos, errores lógicos, problemas de integración o incluso descuidos simples.</p>
 </div>
@@ -374,10 +376,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_2_introducción">2. Introducción</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_introducción">2. Introducción</h3>
 <div class="paragraph">
 <p>Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, ya que contribuyen significativamente al éxito y la confiabilidad de los proyectos.</p>
 </div>
@@ -399,78 +399,74 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_3_principios_de_testing">3. Principios de testing</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_3_1_principio_1_definir">3.1. Principio 1: Definir</h3>
+<h3 id="_3_principios_de_testing">3. Principios de testing</h3>
+<div class="sect3">
+<h4 id="_3_1_principio_1_definir">3.1. Principio 1: Definir</h4>
 <div class="paragraph">
 <p>Es importante definir claramente qué se va a probar, estableciendo objetivos y alcance.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_2_principio_2_evitar">3.2. Principio 2: Evitar</h3>
+<div class="sect3">
+<h4 id="_3_2_principio_2_evitar">3.2. Principio 2: Evitar</h4>
 <div class="paragraph">
 <p>Se deben evitar pruebas redundantes o innecesarias que no aporten valor.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_3_principio_3_probar">3.3. Principio 3: Probar</h3>
+<div class="sect3">
+<h4 id="_3_3_principio_3_probar">3.3. Principio 3: Probar</h4>
 <div class="paragraph">
 <p>El testing debe realizarse de manera sistemática y constante durante todo el desarrollo.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_4_principio_4_inspeccionar">3.4. Principio 4: Inspeccionar</h3>
+<div class="sect3">
+<h4 id="_3_4_principio_4_inspeccionar">3.4. Principio 4: Inspeccionar</h4>
 <div class="paragraph">
 <p>Se deben revisar los artefactos del sistema (código, documentación, diseño) para detectar errores.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_5_principio_5_escribir">3.5. Principio 5: Escribir</h3>
+<div class="sect3">
+<h4 id="_3_5_principio_5_escribir">3.5. Principio 5: Escribir</h4>
 <div class="paragraph">
 <p>Los casos de prueba deben documentarse claramente.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_6_principio_6_examinar">3.6. Principio 6: Examinar</h3>
+<div class="sect3">
+<h4 id="_3_6_principio_6_examinar">3.6. Principio 6: Examinar</h4>
 <div class="paragraph">
 <p>Se deben analizar los resultados de las pruebas cuidadosamente.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_7_principio_7_no_improvisar">3.7. Principio 7: No improvisar</h3>
+<div class="sect3">
+<h4 id="_3_7_principio_7_no_improvisar">3.7. Principio 7: No improvisar</h4>
 <div class="paragraph">
 <p>Las pruebas deben planificarse y no ejecutarse de forma improvisada.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_8_principio_8_asumir">3.8. Principio 8: Asumir</h3>
+<div class="sect3">
+<h4 id="_3_8_principio_8_asumir">3.8. Principio 8: Asumir</h4>
 <div class="paragraph">
 <p>Se debe asumir que el sistema tiene errores y diseñar pruebas para encontrarlos.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_9_principio_9_encontrar">3.9. Principio 9: Encontrar</h3>
+<div class="sect3">
+<h4 id="_3_9_principio_9_encontrar">3.9. Principio 9: Encontrar</h4>
 <div class="paragraph">
 <p>El objetivo principal es encontrar fallas, no confirmar que todo funciona.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3_10_principio_10_ser_creativos">3.10. Principio 10: Ser creativos</h3>
+<div class="sect3">
+<h4 id="_3_10_principio_10_ser_creativos">3.10. Principio 10: Ser creativos</h4>
 <div class="paragraph">
 <p>Las pruebas deben ser creativas para descubrir escenarios no evidentes.</p>
 </div>
 <hr>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_4_proceso_de_testing">4. Proceso de testing</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_4_1_planificación_de_la_prueba">4.1. Planificación de la prueba</h3>
+<h3 id="_4_proceso_de_testing">4. Proceso de testing</h3>
+<div class="sect3">
+<h4 id="_4_1_planificación_de_la_prueba">4.1. Planificación de la prueba</h4>
 <div class="paragraph">
 <p>La actividad de prueba comienza temprano en el desarrollo, generalmente durante la fase de análisis.</p>
 </div>
@@ -511,8 +507,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_4_2_identificación_de_la_prueba">4.2. Identificación de la prueba</h3>
+<div class="sect3">
+<h4 id="_4_2_identificación_de_la_prueba">4.2. Identificación de la prueba</h4>
 <div class="paragraph">
 <p>En esta etapa se determina qué debe probarse con mayor detalle.</p>
 </div>
@@ -553,8 +549,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_4_3_especificación_de_la_prueba">4.3. Especificación de la prueba</h3>
+<div class="sect3">
+<h4 id="_4_3_especificación_de_la_prueba">4.3. Especificación de la prueba</h4>
 <div class="paragraph">
 <p>Se documenta cómo se ejecutarán las pruebas:</p>
 </div>
@@ -585,8 +581,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_4_4_ejecución_de_las_pruebas">4.4. Ejecución de las pruebas</h3>
+<div class="sect3">
+<h4 id="_4_4_ejecución_de_las_pruebas">4.4. Ejecución de las pruebas</h4>
 <div class="paragraph">
 <p>Se ejecutan las pruebas según lo especificado.</p>
 </div>
@@ -640,8 +636,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_4_5_análisis_de_error">4.5. Análisis de error</h3>
+<div class="sect3">
+<h4 id="_4_5_análisis_de_error">4.5. Análisis de error</h4>
 <div class="paragraph">
 <p>Cuando ocurre una falla, se analiza su causa:</p>
 </div>
@@ -666,18 +662,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_4_6_finalización_de_las_pruebas">4.6. Finalización de las pruebas</h3>
+<div class="sect3">
+<h4 id="_4_6_finalización_de_las_pruebas">4.6. Finalización de las pruebas</h4>
 <div class="paragraph">
 <p>Si luego de repetir las pruebas no se detectan errores, el proceso se da por finalizado.</p>
 </div>
 <hr>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_5_enfoques_y_procesos_claves_de_un_software">5. Enfoques y procesos claves de un software</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_5_enfoques_y_procesos_claves_de_un_software">5. Enfoques y procesos claves de un software</h3>
 <div class="paragraph">
 <p>Los procesos de testing son fundamentales porque:</p>
 </div>
@@ -695,6 +689,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 </div>
 <hr>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -731,16 +726,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Ambas son complementarias.</p>
 </div>
 <hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_7_enfoques_de_pruebas">7. Enfoques de pruebas</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_7_enfoques_de_pruebas">7. Enfoques de pruebas</h3>
 <div class="paragraph">
 <p>Existen dos enfoques principales:</p>
 </div>
-<div class="sect2">
-<h3 id="_enfoque_estático">Enfoque estático</h3>
+<div class="sect3">
+<h4 id="_enfoque_estático">Enfoque estático</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -755,8 +747,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_enfoque_dinámico">Enfoque dinámico</h3>
+<div class="sect3">
+<h4 id="_enfoque_dinámico">Enfoque dinámico</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -772,8 +764,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_7_1_en_qué_se_diferencian_los_enfoques">7.1. ¿En qué se diferencian los enfoques?</h3>
+<div class="sect3">
+<h4 id="_7_1_en_qué_se_diferencian_los_enfoques">7.1. ¿En qué se diferencian los enfoques?</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -803,12 +795,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <hr>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_8_un_escenario_posible_para_un_ciclo_de_desarrollo_y_despliegue_de_software">8. Un escenario posible para un ciclo de desarrollo y despliegue de software</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_8_1_entorno_de_desarrollo">8.1. Entorno de desarrollo</h3>
+<h3 id="_8_un_escenario_posible_para_un_ciclo_de_desarrollo_y_despliegue_de_software">8. Un escenario posible para un ciclo de desarrollo y despliegue de software</h3>
+<div class="sect3">
+<h4 id="_8_1_entorno_de_desarrollo">8.1. Entorno de desarrollo</h4>
 <div class="paragraph">
 <p>Es donde los desarrolladores escriben y prueban el código.</p>
 </div>
@@ -830,8 +820,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_8_2_entorno_de_prueba_o_testing">8.2. Entorno de prueba o testing</h3>
+<div class="sect3">
+<h4 id="_8_2_entorno_de_prueba_o_testing">8.2. Entorno de prueba o testing</h4>
 <div class="paragraph">
 <p>Es donde se ejecutan pruebas controladas.</p>
 </div>
@@ -850,8 +840,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_8_3_entorno_de_pre_producción_o_staging">8.3. Entorno de pre-producción o staging</h3>
+<div class="sect3">
+<h4 id="_8_3_entorno_de_pre_producción_o_staging">8.3. Entorno de pre-producción o staging</h4>
 <div class="paragraph">
 <p>Es una simulación casi real de producción.</p>
 </div>
@@ -870,8 +860,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_8_4_entorno_de_producción">8.4. Entorno de producción</h3>
+<div class="sect3">
+<h4 id="_8_4_entorno_de_producción">8.4. Entorno de producción</h4>
 <div class="paragraph">
 <p>Es el entorno real donde el usuario utiliza el sistema.</p>
 </div>
@@ -894,21 +884,17 @@ document.addEventListener('DOMContentLoaded', function() {
 <hr>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_9_niveles_y_tipos_de_pruebas">9. Niveles y tipos de pruebas</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_9_niveles_y_tipos_de_pruebas">9. Niveles y tipos de pruebas</h3>
 <div class="paragraph">
 <p>Las pruebas se organizan en distintos niveles según qué parte del sistema se evalúa.</p>
 </div>
 <hr>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_10_cuáles_son_los_niveles_de_pruebas">10. ¿Cuáles son los niveles de pruebas?</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_10_1_pruebas_unitarias">10.1. Pruebas unitarias</h3>
+<h3 id="_10_cuáles_son_los_niveles_de_pruebas">10. ¿Cuáles son los niveles de pruebas?</h3>
+<div class="sect3">
+<h4 id="_10_1_pruebas_unitarias">10.1. Pruebas unitarias</h4>
 <div class="paragraph">
 <p>Se enfocan en componentes individuales.</p>
 </div>
@@ -940,8 +926,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_10_2_pruebas_de_integración">10.2. Pruebas de integración</h3>
+<div class="sect3">
+<h4 id="_10_2_pruebas_de_integración">10.2. Pruebas de integración</h4>
 <div class="paragraph">
 <p>Verifican la interacción entre componentes.</p>
 </div>
@@ -957,8 +943,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_10_3_pruebas_de_sistemas">10.3. Pruebas de sistemas</h3>
+<div class="sect3">
+<h4 id="_10_3_pruebas_de_sistemas">10.3. Pruebas de sistemas</h4>
 <div class="paragraph">
 <p>Evalúan el sistema completo.</p>
 </div>
@@ -974,8 +960,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <hr>
 </div>
-<div class="sect2">
-<h3 id="_10_4_pruebas_de_aceptación">10.4. Pruebas de aceptación</h3>
+<div class="sect3">
+<h4 id="_10_4_pruebas_de_aceptación">10.4. Pruebas de aceptación</h4>
 <div class="paragraph">
 <p>Se realizan en condiciones reales.</p>
 </div>
@@ -992,10 +978,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <hr>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_11_tipos_de_pruebas">11. Tipos de pruebas</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_11_tipos_de_pruebas">11. Tipos de pruebas</h3>
 <div class="paragraph">
 <p>Existen múltiples tipos de pruebas:</p>
 </div>
@@ -1032,6 +1016,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <div class="paragraph">
 <p>Cada tipo aborda un aspecto distinto del sistema y, en conjunto, permiten asegurar su calidad.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1318,7 +1303,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-19 18:07:57 UTC
+Last updated 2026-04-19 18:13:10 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
