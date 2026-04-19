@@ -52,7 +52,7 @@ ppts: https://drive.google.com/drive/folders/1tJqvvOpZccptvE-xbIwx4sy_QIBMw5Sn
 == Semana 1
 
 
-== 1. Comenzamos con un código con errores
+=== 1. Comenzamos con un código con errores
 
 En el desarrollo de software es común comenzar con código que contiene errores. Estos errores pueden surgir por múltiples razones: mala interpretación de requisitos, errores lógicos, problemas de integración o incluso descuidos simples.
 
@@ -60,7 +60,7 @@ El objetivo del testing no es demostrar que el software funciona perfectamente, 
 
 ---
 
-== 2. Introducción
+=== 2. Introducción
 
 Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, ya que contribuyen significativamente al éxito y la confiabilidad de los proyectos.
 
@@ -72,43 +72,43 @@ Estos procesos:
 
 ---
 
-== 3. Principios de testing
+=== 3. Principios de testing
 
-=== 3.1. Principio 1: Definir
+==== 3.1. Principio 1: Definir
 Es importante definir claramente qué se va a probar, estableciendo objetivos y alcance.
 
-=== 3.2. Principio 2: Evitar
+==== 3.2. Principio 2: Evitar
 Se deben evitar pruebas redundantes o innecesarias que no aporten valor.
 
-=== 3.3. Principio 3: Probar
+==== 3.3. Principio 3: Probar
 El testing debe realizarse de manera sistemática y constante durante todo el desarrollo.
 
-=== 3.4. Principio 4: Inspeccionar
+==== 3.4. Principio 4: Inspeccionar
 Se deben revisar los artefactos del sistema (código, documentación, diseño) para detectar errores.
 
-=== 3.5. Principio 5: Escribir
+==== 3.5. Principio 5: Escribir
 Los casos de prueba deben documentarse claramente.
 
-=== 3.6. Principio 6: Examinar
+==== 3.6. Principio 6: Examinar
 Se deben analizar los resultados de las pruebas cuidadosamente.
 
-=== 3.7. Principio 7: No improvisar
+==== 3.7. Principio 7: No improvisar
 Las pruebas deben planificarse y no ejecutarse de forma improvisada.
 
-=== 3.8. Principio 8: Asumir
+==== 3.8. Principio 8: Asumir
 Se debe asumir que el sistema tiene errores y diseñar pruebas para encontrarlos.
 
-=== 3.9. Principio 9: Encontrar
+==== 3.9. Principio 9: Encontrar
 El objetivo principal es encontrar fallas, no confirmar que todo funciona.
 
-=== 3.10. Principio 10: Ser creativos
+==== 3.10. Principio 10: Ser creativos
 Las pruebas deben ser creativas para descubrir escenarios no evidentes.
 
 ---
 
-== 4. Proceso de testing
+=== 4. Proceso de testing
 
-=== 4.1. Planificación de la prueba
+==== 4.1. Planificación de la prueba
 
 La actividad de prueba comienza temprano en el desarrollo, generalmente durante la fase de análisis.
 
@@ -129,7 +129,7 @@ Se mantiene un registro de pruebas para asegurar trazabilidad y mejorar procesos
 
 ---
 
-=== 4.2. Identificación de la prueba
+==== 4.2. Identificación de la prueba
 
 En esta etapa se determina qué debe probarse con mayor detalle.
 
@@ -149,7 +149,7 @@ Cuando los recursos son limitados, se priorizan las pruebas con mayor probabilid
 
 ---
 
-=== 4.3. Especificación de la prueba
+==== 4.3. Especificación de la prueba
 
 Se documenta cómo se ejecutarán las pruebas:
 
@@ -165,7 +165,7 @@ También se preparan reportes para registrar resultados.
 
 ---
 
-=== 4.4. Ejecución de las pruebas
+==== 4.4. Ejecución de las pruebas
 
 Se ejecutan las pruebas según lo especificado.
 
@@ -187,7 +187,7 @@ Al finalizar:
 
 ---
 
-=== 4.5. Análisis de error
+==== 4.5. Análisis de error
 
 Cuando ocurre una falla, se analiza su causa:
 
@@ -201,13 +201,13 @@ Este paso es clave para evitar falsos positivos.
 
 ---
 
-=== 4.6. Finalización de las pruebas
+==== 4.6. Finalización de las pruebas
 
 Si luego de repetir las pruebas no se detectan errores, el proceso se da por finalizado.
 
 ---
 
-== 5. Enfoques y procesos claves de un software
+=== 5. Enfoques y procesos claves de un software
 
 Los procesos de testing son fundamentales porque:
 
@@ -231,17 +231,17 @@ Ambas son complementarias.
 
 ---
 
-== 7. Enfoques de pruebas
+=== 7. Enfoques de pruebas
 
 Existen dos enfoques principales:
 
-=== Enfoque estático
+==== Enfoque estático
 
 * No requiere ejecutar el software.
 * Analiza documentación, diseño y código.
 * Detecta errores tempranos.
 
-=== Enfoque dinámico
+==== Enfoque dinámico
 
 * Requiere ejecutar el software.
 * Evalúa comportamiento real.
@@ -249,7 +249,7 @@ Existen dos enfoques principales:
 
 ---
 
-=== 7.1. ¿En qué se diferencian los enfoques?
+==== 7.1. ¿En qué se diferencian los enfoques?
 
 [cols="1,1"]
 |===
@@ -267,9 +267,9 @@ Existen dos enfoques principales:
 
 ---
 
-== 8. Un escenario posible para un ciclo de desarrollo y despliegue de software
+=== 8. Un escenario posible para un ciclo de desarrollo y despliegue de software
 
-=== 8.1. Entorno de desarrollo
+==== 8.1. Entorno de desarrollo
 
 Es donde los desarrolladores escriben y prueban el código.
 
@@ -281,7 +281,7 @@ Características:
 
 ---
 
-=== 8.2. Entorno de prueba o testing
+==== 8.2. Entorno de prueba o testing
 
 Es donde se ejecutan pruebas controladas.
 
@@ -292,7 +292,7 @@ Características:
 
 ---
 
-=== 8.3. Entorno de pre-producción o staging
+==== 8.3. Entorno de pre-producción o staging
 
 Es una simulación casi real de producción.
 
@@ -303,7 +303,7 @@ Características:
 
 ---
 
-=== 8.4. Entorno de producción
+==== 8.4. Entorno de producción
 
 Es el entorno real donde el usuario utiliza el sistema.
 
@@ -315,15 +315,15 @@ Características:
 
 ---
 
-== 9. Niveles y tipos de pruebas
+=== 9. Niveles y tipos de pruebas
 
 Las pruebas se organizan en distintos niveles según qué parte del sistema se evalúa.
 
 ---
 
-== 10. ¿Cuáles son los niveles de pruebas?
+=== 10. ¿Cuáles son los niveles de pruebas?
 
-=== 10.1. Pruebas unitarias
+==== 10.1. Pruebas unitarias
 
 Se enfocan en componentes individuales.
 
@@ -344,7 +344,7 @@ public int sumar(int a, int b) {
 
 ---
 
-=== 10.2. Pruebas de integración
+==== 10.2. Pruebas de integración
 
 Verifican la interacción entre componentes.
 
@@ -353,7 +353,7 @@ Verifican la interacción entre componentes.
 
 ---
 
-=== 10.3. Pruebas de sistemas
+==== 10.3. Pruebas de sistemas
 
 Evalúan el sistema completo.
 
@@ -362,7 +362,7 @@ Evalúan el sistema completo.
 
 ---
 
-=== 10.4. Pruebas de aceptación
+==== 10.4. Pruebas de aceptación
 
 Se realizan en condiciones reales.
 
@@ -371,7 +371,7 @@ Se realizan en condiciones reales.
 
 ---
 
-== 11. Tipos de pruebas
+=== 11. Tipos de pruebas
 
 Existen múltiples tipos de pruebas:
 
