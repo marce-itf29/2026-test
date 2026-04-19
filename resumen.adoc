@@ -1,5 +1,5 @@
 :toc: left
-:toclevels: 4
+:toclevels: 5
 :toc-title: 2026-test
 :imagesdir: ./images
 :stem: 
@@ -48,6 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
 == Links
 
 ppts: https://drive.google.com/drive/folders/1tJqvvOpZccptvE-xbIwx4sy_QIBMw5Sn
+
+== Unidad 1 (Semana 1-4)
+
+Durante las primeras semanas de la unidad se trabajaran conceptos introductorios esenciales para comprender por que se realizan pruebas de software, cual es su proposito y por que resulta importante aplicar estrategias que fortalezcan la practica del testing.
+
+En esta etapa inicial se buscara distinguir dos metodologias que se utilizan en diferentes momentos del ciclo de desarrollo de software:
+
+* Enfoque estatico
+* Enfoque dinamico
+
 
 == Semana 1
 
@@ -392,7 +402,7 @@ Cada tipo aborda un aspecto distinto del sistema y, en conjunto, permiten asegur
 
 === Bug Advocacy
 
-Cuando un tester o un equipo de pruebas encuentra un defecto en el software, el bug advocacy implica comunicar de manera efectiva la importancia y las implicaciones del error a los desarrolladores y otras partes interesadas en el proyecto.
+Cuando un testero un equipo de pruebas encuentra un defecto en el software, el bug advocacy implica comunicar de manera efectiva la importancia y las implicaciones del error a los desarrolladores y otras partes interesadas en el proyecto.
 
 Esto puede implicar proporcionar información detallada sobre cómo reproducir el error, los posibles efectos secundarios que puede tener en el sistema y cualquier otro detalle relevante que ayude a priorizar y resolver el problema de manera eficiente.
 
@@ -548,4 +558,6 @@ También es importante:
 
 *Resultado esperado:* Ingreso correcto y carga de pantalla principal.
 
+
+== Unidad 2
 
