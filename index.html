@@ -244,6 +244,10 @@ a {
 <li><a href="#_3_2_principio_2_evitar">3.2. Principio 2: Evitar</a></li>
 <li><a href="#_3_3_principio_3_probar">3.3. Principio 3: Probar</a></li>
 <li><a href="#_3_4_principio_4_inspeccionar">3.4. Principio 4: Inspeccionar</a></li>
+</ul>
+</li>
+<li><a href="#_proceso_de_pruebas_debe_incluir_una_inspección_de_los_resultados_de_cada_prueba">proceso de pruebas debe incluir una <strong>inspección de los resultados</strong> de cada prueba.</a>
+<ul class="sectlevel3">
 <li><a href="#_3_5_principio_5_escribir">3.5. Principio 5: Escribir</a></li>
 <li><a href="#_3_6_principio_6_examinar">3.6. Principio 6: Examinar</a></li>
 <li><a href="#_3_7_principio_7_no_improvisar">3.7. Principio 7: No improvisar</a></li>
@@ -462,31 +466,183 @@ El testing es el proceso de ejecutar un programa con la intención de encontrar 
 <div class="sect3">
 <h4 id="_3_1_principio_1_definir">3.1. Principio 1: Definir</h4>
 <div class="paragraph">
-<p>Es importante definir claramente qué se va a probar, estableciendo objetivos y alcance.</p>
+<p>Una parte fundamental de un caso de prueba es la <strong>definición del resultado esperado</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Aunque pueda parecer obvio, no definir claramente el resultado esperado es un error frecuente. Si no está especificado, un resultado incorrecto podría interpretarse como válido.</p>
+</div>
+<div class="paragraph">
+<p>Para evitar esto, todo caso de prueba debe incluir:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Descripción de las entradas</strong>: datos que se utilizarán en la prueba.</p>
+</li>
+<li>
+<p><strong>Resultado esperado</strong>: comportamiento o salida exacta que debería producir el sistema.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Un caso de prueba sin resultado esperado no permite determinar si el sistema funciona correctamente.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_3_2_principio_2_evitar">3.2. Principio 2: Evitar</h4>
 <div class="paragraph">
-<p>Se deben evitar pruebas redundantes o innecesarias que no aporten valor.</p>
+<p>Un programador debe evitar probar su propio programa.</p>
+</div>
+<div class="paragraph">
+<p>Intentar evaluar el propio trabajo no suele ser efectivo. La persona que desarrolló el código sabe lo que quiso hacer, por lo que le cuesta reconocer cuándo el sistema hace algo diferente a lo esperado.</p>
+</div>
+<div class="paragraph">
+<p>Además, existe una tendencia natural a no querer encontrar errores en el propio trabajo, lo que dificulta un análisis crítico.</p>
+</div>
+<div class="paragraph">
+<p>También puede ocurrir que los errores provengan de una mala comprensión de los requerimientos o del negocio. En esos casos, el desarrollador difícilmente detectará el problema, ya que parte de la misma interpretación.</p>
+</div>
+<div class="paragraph">
+<p>Por estas razones, se establece este principio:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Una persona puede probar su propio código, pero no lo hará de forma tan efectiva como otra.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, una vez detectados los errores, es recomendable que el desarrollador que escribió el programa sea quien los corrija.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_3_3_principio_3_probar">3.3. Principio 3: Probar</h4>
 <div class="paragraph">
-<p>El testing debe realizarse de manera sistemática y constante durante todo el desarrollo.</p>
+<p>Una organización de programación no debería probar sus propios programas.</p>
+</div>
+<div class="paragraph">
+<p>Este principio extiende la idea del anterior. No solo las personas tienen dificultades para evaluar su propio trabajo, sino también las organizaciones.</p>
+</div>
+<div class="paragraph">
+<p>Las empresas de desarrollo suelen tener objetivos centrados en <strong>tiempos de entrega</strong> y <strong>costos</strong>. Estos son fáciles de medir, a diferencia de la calidad o la confiabilidad del software.</p>
+</div>
+<div class="paragraph">
+<p>Debido a esto, puede ocurrir que las pruebas no se enfoquen realmente en encontrar errores, ya que detectarlos puede implicar retrasos y mayores costos.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Los objetivos de una organización no están orientados a la fiabilidad ni a la calidad del software, es probable que no hagan pruebas que realmente encuentren errores, ya que encontrar errores suele retrasar los tiempos de entrega y aumentar los costos de un proyecto.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_3_4_principio_4_inspeccionar">3.4. Principio 4: Inspeccionar</h4>
-<div class="paragraph">
-<p>Se deben revisar los artefactos del sistema (código, documentación, diseño) para detectar errores.</p>
+
 </div>
+</div>
+<div class="sect2">
+<h3 id="_proceso_de_pruebas_debe_incluir_una_inspección_de_los_resultados_de_cada_prueba">proceso de pruebas debe incluir una <strong>inspección de los resultados</strong> de cada prueba.</h3>
+<div class="paragraph">
+<p>Esto implica:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>analizar los resultados para verificar que las pruebas se están ejecutando correctamente (Si no rompe, no quiere decir que funciona).</p>
+</li>
+<li>
+<p>confirmar que los defectos detectados sean realmente errores. (Verificar que no haya falsos positivos).</p>
+</li>
+<li>
+<p>asegurarse de que se está encontrando la mayor cantidad posible de fallas. (Si no se encuentra ningún error, es probable que las pruebas no estén diseñadas para detectarlos).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cuando se realizan múltiples rondas de pruebas, es común que en las últimas aparezcan defectos que no fueron detectados en las primeras.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La inspección de resultados es clave para validar la calidad del testing. No basta con ejecutar pruebas, es necesario analizar sus resultados de forma crítica.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_3_5_principio_5_escribir">3.5. Principio 5: Escribir</h4>
 <div class="paragraph">
-<p>Los casos de prueba deben documentarse claramente.</p>
+<p>Los casos de prueba deben escribirse tanto para <strong>condiciones de entrada válidas y esperadas</strong>, como para <strong>condiciones inválidas e inesperadas</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Existe una tendencia natural a centrarse únicamente en los casos correctos y evitar probar situaciones que generen errores. Sin embargo, muchos defectos aparecen justamente en condiciones no previstas durante el desarrollo.</p>
+</div>
+<div class="paragraph">
+<p>Por este motivo, es necesario definir casos de prueba que contemplen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>entradas válidas (comportamiento esperado),</p>
+</li>
+<li>
+<p>entradas inválidas (errores),</p>
+</li>
+<li>
+<p>entradas inesperadas (uso incorrecto del sistema).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Muchos problemas del software se detectan cuando los usuarios lo utilizan de formas no previstas. Por eso, quien prueba debe intentar anticipar estos escenarios y pensar como un usuario real.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las pruebas más efectivas no solo verifican que el sistema funcione bien, sino que también validan cómo se comporta ante errores y usos incorrectos.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1365,7 +1521,7 @@ El testing es el proceso de ejecutar un programa con la intención de encontrar 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-19 19:23:04 UTC
+Last updated 2026-04-19 20:12:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
