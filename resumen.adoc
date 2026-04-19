@@ -72,15 +72,35 @@ El objetivo del testing no es demostrar que el software funciona perfectamente, 
 
 === 2. Introducción
 
-Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, ya que contribuyen significativamente al éxito y la confiabilidad de los proyectos.
+El *testing de software* es un proceso (o conjunto de procesos) cuyo objetivo es asegurar que un sistema se comporte como se espera: que haga lo que debe hacer y que no haga lo que no corresponde. El software debe ser *predecible y consistente*, sin generar comportamientos inesperados para el usuario.
 
-Estos procesos:
+En un escenario ideal, se probarían todas las combinaciones posibles de entradas y salidas de un programa. Sin embargo, esto no es viable en la práctica debido a la gran cantidad de combinaciones, el tiempo requerido y el costo asociado. Por eso, el testing se basa en seleccionar casos representativos que maximicen la detección de errores.
 
-* Son actividades sistemáticas y planificadas que se realizan durante todo el ciclo de desarrollo.
-* Tienen como objetivo verificar y validar que el software cumple con los requisitos especificados.
-* Requieren seleccionar técnicas y herramientas adecuadas según el contexto del proyecto.
+El objetivo del testing no es únicamente verificar que “no haya errores”, sino *aumentar la calidad y confiabilidad del software*. Esto implica asumir que el sistema puede tener fallas y diseñar pruebas para encontrarlas.
 
----
+En términos simples:
+
+[quote]
+El testing es el proceso de ejecutar un programa con la intención de encontrar errores.
+
+Cuando realizamos testing buscamos:
+
+* *Errores*: problemas introducidos durante la construcción del software (por ejemplo, en requisitos o diseño).
+* *Defectos*: fallas que se manifiestan en etapas posteriores, especialmente durante la ejecución o pruebas.
+
+Para detectar estos problemas se utilizan *casos de prueba*, que son la base del testing. Un caso de prueba incluye:
+
+* valores de entrada,
+* condiciones previas (precondiciones),
+* pasos a ejecutar,
+* resultados esperados.
+
+Los casos de prueba permiten:
+
+* guiar la ejecución de las pruebas,
+* verificar si se cumple un requerimiento específico,
+* evaluar el comportamiento del sistema bajo condiciones definidas.
+
 
 === 3. Principios de testing
 
