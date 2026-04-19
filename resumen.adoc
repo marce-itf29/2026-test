@@ -217,7 +217,7 @@ Los procesos de testing son fundamentales porque:
 
 ---
 
-== 6. Verificación y validación
+=== 6. Verificación y validación
 
 La verificación y validación (V&V) aseguran que el software cumple con lo esperado.
 
