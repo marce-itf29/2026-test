@@ -121,14 +121,13 @@ a {
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>TEST / QA</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">2026-test</div>
+<ul class="sectlevel0">
+<li><a href="#_test_qa">TEST / QA</a>
 <ul class="sectlevel1">
 <li><a href="#_links">Links</a></li>
 <li><a href="#_semana_1">Semana 1</a></li>
-<li><a href="#_semana_1_2">Semana 1</a>
-<ul class="sectlevel1">
 <li><a href="#_1_comenzamos_con_un_código_con_errores">1. Comenzamos con un código con errores</a></li>
 <li><a href="#_2_introducción">2. Introducción</a></li>
 <li><a href="#_3_principios_de_testing">3. Principios de testing</a>
@@ -208,6 +207,42 @@ a {
 </div>
 </div>
 <div id="content">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+
+  // Find all TOC items with children
+  const tocItems = toc.querySelectorAll('li');
+
+  tocItems.forEach(function(item) {
+    const childList = item.querySelector('ul');
+    if (childList) {
+      // Start with first level expanded, others collapsed
+      const isTopLevel = !item.parentElement.closest('li');
+      if (isTopLevel) {
+        item.classList.add('expanded');
+      }
+
+      const link = item.querySelector('a');
+      if (link) {
+        link.addEventListener('click', function(e) {
+          // Only toggle if clicking the arrow area or if item has children
+          const rect = link.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+
+          // Toggle on any click for items with children
+          if (childList) {
+            e.preventDefault();
+            item.classList.toggle('expanded');
+          }
+        });
+      }
+    }
+  });
+});
+</script>
+<h1 id="_test_qa" class="sect0">TEST / QA</h1>
 <div class="sect1">
 <h2 id="_links">Links</h2>
 <div class="sectionbody">
@@ -222,7 +257,6 @@ a {
 
 </div>
 </div>
-<h1 id="_semana_1_2" class="sect0">Semana 1</h1>
 <div class="sect1">
 <h2 id="_1_comenzamos_con_un_código_con_errores">1. Comenzamos con un código con errores</h2>
 <div class="sectionbody">
@@ -1178,7 +1212,7 @@ a {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-08 01:02:55 UTC
+Last updated 2026-04-19 17:30:20 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
