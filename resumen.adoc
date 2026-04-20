@@ -648,7 +648,7 @@ Las pruebas desempeñan un papel fundamental en el desarrollo de software, contr
 
 Estas preguntas nos servirán de base para explorar en detalle los niveles y tipos de pruebas en el desarrollo de software, y cómo contribuyen al éxito y la calidad de las aplicaciones.
 
-=== ¿Cuáles son los niveles de prueba?
+=== 10. ¿Cuáles son los niveles de prueba?
 
 Conocer y comprender los diferentes niveles de pruebas en el desarrollo de software resulta fundamental para garantizar la calidad y fiabilidad de cualquier producto final. ¿Por qué? Pues, permite reducir riesgos y costos asociados con errores detectados tarde en el ciclo de desarrollo. Por lo tanto, la comprensión de los niveles de prueba permitirá una planificación adecuada de las mismas y una mejora continua en el proceso de desarrollo de software.
 
@@ -761,7 +761,7 @@ El objetivo de las pruebas de aceptación es establecer confianza en el sistema,
 
 Comprende tanto la prueba realizada por el usuario en ambiente de laboratorio (pruebas alfa), como la prueba en ambientes de trabajo reales (pruebas beta).
 
-=== 10. Algunos tipos de prueba
+=== 11. Algunos tipos de prueba
 
 Se tienen muchos tipos de pruebas distintos que permiten asegurar una calidad mínima en el software que estaremos probando. Ninguno de ellos es independiente de otros ni mutuamente excluyentes; en un proceso de pruebas completo deberíamos utilizar varios tipos en combinación.
 
