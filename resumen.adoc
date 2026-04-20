@@ -58,10 +58,10 @@ En esta etapa inicial se buscara distinguir dos metodologias que se utilizan en 
 * Enfoque estatico
 * Enfoque dinamico
 
-= Semana 1
 
+== Semana 1
 
-== 1. Comencemos con un código con errores
+=== 1. Comencemos con un código con errores
 
 Antes de iniciar con los principios de testing, seguramente coincidimos que durante las materias anteriores, aprendiste a detectar errores y corregirlos. Por eso, comenzamos con un ejemplo simple de un código con errores en un dispositivo electrónico, en este caso, un termostato:
 
@@ -112,23 +112,42 @@ def ajustar_temperatura(temp_actual, temp_deseada):
 
 ---
 
-== 2. Introducción
+=== 2. Introducción
 
-El testing de software es un proceso diseñado para asegurarse que el código haga lo que debe hacer y que no haga nada que no debería hacer.
+El testing de software es un proceso, o una serie de procesos, diseñado para asegurarse que el código (que puede ser de computadora, celular, cámaras de foto, routers de internet, sensores y cualquier otro dispositivo electrónico) haga lo que debe hacer y que no haga nada que no debería hacer. El software debe ser predecible y consistente, sin esconder ninguna sorpresa para los usuarios.
 
-En resumen:
+En un mundo ideal queremos probar cada posible escenario o permutación de datos de un programa. En la mayoría de los casos no es posible debido a la cantidad de combinaciones posibles de entradas y salidas del software que queremos probar. Crear casos de prueba para cada uno de los posibles escenarios es poco práctico, requiere un tiempo muy elevado y necesita de muchos recursos económicos para que sea viable nuestro proyecto.
+
+Cuando probamos un software no solo queremos “verificar que no haya errores” sino que deseamos agregar valor al producto. Agregar valor mediante las pruebas implica aumentar la fiabilidad del software. Aumentar la fiabilidad del software conlleva encontrar y eliminar los errores y defectos del software. Es decir que no probamos un software para ver que funcione, sino que lo hacemos asumiendo que el programa SI tiene errores y queremos encontrarlos.
+
+En resumen, una definición completa del software sería:
 
 [quote]
 El testing es el proceso de ejecutar un programa con la intención de encontrar errores.
 
+Cuando hacemos testing buscamos errores o defectos.
+
+* Los errores son aquellos problemas con un artefacto de software que se encuentran en la etapa de su confección (por ejemplo, un error de especificación de requerimientos que se halla cuando se están especificando).
+* Los defectos son errores de un artefacto de software que están en etapas posteriores a la de su confección (por ejemplo, un defecto del software que se encuentra en las etapas de testing).
+
+Para encontrar errores y defectos utilizamos una herramienta llamada caso de prueba, que:
+
+* es un conjunto de valores de entrada,
+* son precondiciones de ejecución,
+* son pasos de ejecución y
+* son resultados esperados,
+* están desarrollados para probar el software en ciertas condiciones específicas;
+* sirven para establecer una ruta a seguir a la hora de probar el software y
+* evaluar si se cumple un requerimiento en específico.
+
 ---
 
-== 3. Principios de testing
+=== 3. Principios de testing
 
 
 Los procesos de prueba son un conjunto de actividades que se describen en la siguiente figura:
 
-=== Principio 1: Definir
+==== Principio 1: Definir
 
 Una parte necesaria de un caso de prueba es la definición del resultado esperado.
 
@@ -175,7 +194,7 @@ else:
 
 Este código realiza dos pruebas: una con valores numéricos válidos y otra con un valor no numérico. Dependiendo de si el programa emite el resultado esperado o el mensaje de error correcto, puedes determinar si la función de suma se comporta como se espera.
 
-=== Principio 2: Evitar
+==== Principio 2: Evitar
 
 Un programador debe evitar probar su propio programa.
 
@@ -190,7 +209,7 @@ Es por estas cuestiones que existe este principio:
 Una persona que programa puede probar su propio código, pero no lo hará de una manera tan efectiva ni eficiente como alguien más. Sí es importante notar que una vez que los errores y defectos fueron encontrados, lo mejor es que el/la desarrollador/a que escribió el programa sea la persona indicada para arreglarlos.
 ====
 
-=== Principio 3: Probar
+==== Principio 3: Probar
 
 Una organización de programación no debería probar sus propios programas.
 
@@ -203,7 +222,7 @@ Además, se agrega el problema de los objetivos y métricas de las organizacione
 Los objetivos de una organización no están orientados a la fiabilidad ni a la calidad del software, es probable que no hagan pruebas que realmente encuentren errores, ya que encontrar errores suele retrasar los tiempos de entrega y aumentar los costos de un proyecto.
 ====
 
-=== Principio 4: Inspeccionar
+==== Principio 4: Inspeccionar
 
 Cualquier proceso de pruebas debe incluir una inspección de los resultados de cada prueba que implica:
 
@@ -222,7 +241,7 @@ Imagina que estás probando una aplicación de comercio electrónico. Una de las
 Este hallazgo es crucial, ya que sin el mensaje de confirmación, los usuarios pueden pensar que sus productos no se han agregado, lo que afecta la experiencia del usuario y las ventas. Identificar este problema durante la inspección de resultados te permite informar a los/as desarrolladores/as para que lo corrijan antes del lanzamiento de la aplicación, garantizando así una experiencia de usuario fluida.
 ====
 
-=== Principio 5: Escribir
+==== Principio 5: Escribir
 
 Los casos de prueba deben escribirse para condiciones de entrada que son inválidas e inesperadas, así como también para las válidas y esperadas.
 
@@ -237,7 +256,7 @@ Por ejemplo, evitamos probar condiciones que darán mensajes de error.
 
 Muchos de los defectos de los softwares se encuentran cuando los usuarios lo utilizan de formas que no son correctas y que, probablemente, no se nos hubieran ocurrido durante el desarrollo. Una persona experta en pruebas intenta buscar esas formas incorrectas y procura pensar como los usuarios del software.
 
-=== Principio 6: Examinar
+==== Principio 6: Examinar
 
 Examinar un programa para ver si no hace lo que debe hacer es sólo la mitad del trabajo, la otra mitad es ver que el programa no haga lo que no debe hacer.
 
@@ -258,7 +277,7 @@ Por ejemplo, un programa que ejecuta pagos de sueldos a empleados de una empresa
 
 Corregir estos errores es fundamental para garantizar que el programa funcione como se espera y que los pagos de sueldos se realicen de manera precisa y segura.
 
-=== Principio 7: No improvisar
+==== Principio 7: No improvisar
 
 Evitar los casos de prueba improvisados.
 
@@ -268,7 +287,7 @@ Por lo general, re-definir los casos de prueba conlleva mucho esfuerzo, por lo q
 
 Guardar los casos de prueba que definimos y ejecutarlos en su completitud, luego de cambios al software, es lo que llamamos pruebas de regresión. En estas pruebas de regresión volvemos a ejecutar todos los casos de prueba, incluso si anteriormente no habían tenido errores.
 
-=== Principio 8: Asumir
+==== Principio 8: Asumir
 
 No se deben planear procesos de pruebas asumiendo que no se encontrarán errores.
 
@@ -285,7 +304,7 @@ En lugar de realizar pruebas rigurosas, el equipo de desarrollo lanza el softwar
 
 Este ejemplo ilustra cómo la omisión o la reducción de pruebas en un proyecto de software puede ser un error costoso a largo plazo. A pesar de la intención inicial de ahorrar tiempo y dinero, la falta de pruebas adecuadas puede resultar en gastos adicionales para corregir errores, dañar la reputación de la empresa y afectar la satisfacción del cliente. Es un recordatorio de la importancia de no escatimar en el proceso de testing y de considerar las pruebas como una inversión en la calidad y la fiabilidad del software.
 
-=== Principio 9: Encontrar
+==== Principio 9: Encontrar
 
 La probabilidad de que existan más errores en una sección del programa es proporcional a la cantidad de errores ya encontrados en esa sección.
 
@@ -316,7 +335,7 @@ Estos errores pueden agruparse en la sección de "Programación de Citas" debido
 Corregir estos errores es esencial para garantizar un flujo de trabajo eficiente y una experiencia positiva para pacientes y personal administrativo.
 ====
 
-=== Principio 10: Ser creativos
+==== Principio 10: Ser creativos
 
 Probar es una tarea creativa e intelectualmente desafiante.
 
@@ -348,148 +367,426 @@ Probar es una tarea creativa.
 
 ---
 
-== 4. Proceso de Testing
+=== 4. Proceso de Testing
 
-. Planificación
-. Identificación
-. Especificación
-. Ejecución
-. Análisis de errores
-. Finalización
+Es importante planear la prueba; la prueba no es algo que uno haga en forma improvisada. El proceso de prueba es un proceso que en gran medida corre en paralelo con otros procesos. Los procesos de prueba son un conjunto de actividades que se describen en la siguiente figura:
+
+[NOTE]
+====
+Planear prueba → Identificar pruebas → Especificar pruebas → Ejecutar pruebas → Análisis de fallas → Terminar pruebas
+
+En caso de falla, el flujo vuelve a etapas anteriores.
+====
+
+==== 1 - Planificación de la prueba
+
+La actividad de prueba comienza pronto en el proceso de desarrollo. La planificación puede comenzar cuando comenzamos el desarrollo, en general durante el análisis, pero no podemos preparar nada hasta no comenzar la construcción.
+
+Los lineamientos de la prueba se establecen con anticipación. Determinando el método y nivel de ambición, se crean las bases de la prueba.
+
+Debería determinarse si:
+
+* Las pruebas se harán mecánica o automáticamente.
+* Hacer una estimación de recursos que se requerirán y estas decisiones deberían reflejarse en el Plan de Proyecto. Cuando hablamos de recursos requeridos hablamos de tiempo, dinero y personas que se dedicarán a probar.
+* Se estudia si existen programas de prueba y datos que puedan usarse, si deberían modificarse o crearse nuevos.
+
+Usando estos lineamientos como base podemos determinar qué grado de cobertura tendrán los tests. Nunca comenzar las pruebas de integración antes que las de unidad. Se puede probar incrementalmente, agregando nueva funcionalidad a los bloques mientras se avanza.
+
+El plan no debe controlar los detalles de la prueba, sólo servir como base para las actividades de la prueba.
+
+Un registro de la prueba se debe mantener durante el proceso de prueba completo. El registro debería conectarse a la versión del sistema. El propósito del registro es mantener una breve historia de las actividades de prueba y así tener trazabilidad.
+
+El registro es archivado al finalizar las pruebas y sirve de base para el refinamiento del proceso de prueba y para la planificación de nuevos tests.
+
+==== 2 - Identificación de la Prueba
+
+Cuando identificamos lo que debería probarse, se pueden estimar también los recursos requeridos. Es una estimación más detallada que la hecha anteriormente, y actúa como un principal lineamiento para la especificación y ejecución de la prueba.
+
+Esto requiere la configuración y determinación del equipamiento que será requerido para la prueba, tarea que se realiza junto con la organización, para que estén en condiciones en el momento que se la requiera. Estas condiciones pueden incluir adquirir datos o bases de datos necesarias y pertinentes para trabajar, habilitar conexiones a servidores remotos con los programas, configuración del firewall, instalación de paquetes o programas que se necesitan poder probar.
+
+Cuando los recursos de la prueba son restringidos, cada caso de prueba debe maximizar la probabilidad estadística de detección de fallas. Se debería encontrar las fallas mayores primero.
+
+==== 3 - Especificación de la prueba
+
+Cuando se identifica cuáles subtests se harán, se especifican a nivel funcional, donde describiremos la prueba y su propósito de manera general, y en un nivel detallado, donde describiremos exactamente cómo será ejecutado. La última parte incluye una descripción procedural completa de cada paso en la prueba.
+
+Aquí nuevamente las descripciones de los casos de uso son una herramienta poderosa. El propósito de la especificación de la prueba es dar a las personas que no están familiarizadas con la prueba, o aún con el sistema, instrucciones detalladas para correr los casos de prueba.
+
+Cada caso de prueba debe documentarse, para facilitar el reuso en los tests de regresión y tal vez en otras versiones del sistema; aplicando el principio 7. Deberían especificarse las condiciones de prueba tales como: hardware, software, equipamiento de prueba. Debe indicarse también cómo se debe ejecutar la prueba, en qué orden, salidas esperadas y criterios para aprobar el test.
+
+Cuando se escriben los tests de especificación, también se preparan los reportes requeridos para informar los resultados de la prueba. El esqueleto de los reportes se prepara con anticipación.
+
+Las pruebas ayudan a detectar fallas, si se encuentran fallas, pueden corregirse a nivel de diseño no solamente en el código.
+
+Es interesante enfocar las pruebas asumiendo que el sistema tiene fallas, y poder determinar cuántas horas hombre son necesarias para poder detectar nuevas fallas.
+
+==== 4 – Ejecución de las Pruebas
+
+Cuando ejecutamos las pruebas usamos la especificación de pruebas y los reportes de prueba preparados.
+
+La estrategia es probar lo que más se pueda en paralelo, aunque sea difícil.
+
+Las pruebas se realizan en forma manual o automatizada, según se haya especificado.
+
+Las especificaciones indican el resultado esperado. Si alguna de las pruebas falla se registra, se interrumpe la ejecución, y el defecto es analizado y corregido si se puede. Luego la subprueba se ejecuta nuevamente.
+
+Al finalizar la prueba se analizan los resultados. Si está aprobado o no. Este análisis resulta en reportes de prueba. Los reportes contienen en forma resumida el resultado individual de cada subtest y uno final, los recursos gastados y si el test está aprobado o no.
+
+Si se descubrieron cuellos de botella también deben registrarse y mostrarse.
+
+==== 5 - Análisis de Error
+
+Si se detectan fallas cuando se hizo el test, hay que identificar la razón de la falla encontrada. La falla puede ser debida al sistema, puede haber varias causas:
+
+* ¿Se ha ejecutado el test correctamente?
+* ¿Hay alguna falla en los datos o programas de prueba?
+* ¿La falla es causada por los bancos de datos de prueba?
+
+Si la falla no es atribuible a la prueba se debe probar nuevamente.
+
+==== 6. Finalización de las pruebas
+
+Si al ejecutar las pruebas y subpruebas nuevamente no se detectan fallas, se da por finalizado el proceso de pruebas.
+
+---
+=== 5. Enfoques y procesos claves de un software
+
+Los procesos de comprobación de software y análisis del entorno son una parte fundamental de la práctica en el desarrollo de software, y contribuyen significativamente al éxito y la confiabilidad de los proyectos. Es por ello que estos procesos:
+
+* Son actividades sistemáticas y planificadas que se realizan durante el ciclo de desarrollo de software.
+* Tienen el objetivo de verificar y validar que el software cumple con los requisitos especificados y se comporta de manera esperada.
+* La elección de las técnicas y herramientas de comprobación adecuadas depende del análisis del entorno al revelar las necesidades específicas del proyecto.
 
 ---
 
-=== 4.1 Planificación
+=== 6. Verificación y validación
 
-- Definir estrategia
-- Estimar recursos
-- Definir automatización
+La verificación y validación (V&V) es el nombre que se da a los procesos de comprobación y análisis que aseguran que el software que se desarrolla está acorde a su especificación y cumple las necesidades de los clientes.
 
-=== 4.2 Identificación
+La V&V es un proceso de ciclo de vida completo. Inicia con las revisiones de los requerimientos y continúa con las revisiones del diseño y las inspecciones del código hasta la prueba del producto. Existen actividades de V&V en cada etapa del proceso de desarrollo del software.
 
-- Qué probar
-- Recursos necesarios
+La verificación y la validación no son lo mismo, sin embargo es muy común confundirlas. Conozcamos sus diferencias:
 
-=== 4.3 Especificación
+* *Verificación:* El proceso de verificación intenta comprobar que el software se está construyendo de acuerdo con su especificación. Se comprueba que el sistema cumple los requerimientos funcionales y no funcionales que se le han especificado. Básicamente, la verificación intenta responder la pregunta: ¿Estamos construyendo el producto correctamente?
 
-- Definir casos de prueba
-- Resultados esperados
+* *Validación:* El proceso de validación intenta asegurar que el software cumple con las expectativas del cliente. Va más allá de comprobar si el software está acorde con su especificación, para probar que el software hace lo que el usuario espera, a diferencia de lo que se ha especificado. Básicamente, la validación intenta responder la pregunta: ¿Estamos construyendo el producto correcto?
 
-=== 4.4 Ejecución
+Es importante llevar a cabo la validación de los requerimientos del sistema de forma inicial. Es fácil cometer errores y omisiones durante la fase de análisis de requerimientos del sistema y, en tales casos, el software final no cumplirá las expectativas de los clientes.
 
-- Ejecutar pruebas
-- Registrar resultados
+[NOTE]
+====
+Si bien el análisis de requerimientos no es competencia de un Técnico Superior en Desarrollo de Software, en esta materia se verán contenidos que ayuden a validar esos requerimientos para que el Técnico Superior pueda leerlos y ayudar a quienes corresponda a encontrar errores pertinentes.
+====
 
-=== 4.5 Análisis de errores
+La validación de los requerimientos y la documentación es muy importante para lograr un software que satisfaga las necesidades de nuestros clientes. Sin embargo, en la realidad, la validación de los requerimientos no puede descubrir todos los problemas que presenta la aplicación. Algunos defectos en los requerimientos sólo pueden descubrirse cuando se ha terminado la implementación del sistema.
 
-- Identificar causa de fallas
+=== 7. Enfoques de pruebas
 
-=== 4.6 Finalización
+Existen 2 enfoques distintos que nos ayudarán con la verificación y validación del software. Estos enfoques nos ayudarán a ver qué herramientas utilizaremos para encontrar los errores y defectos que queremos arreglar.
 
-- Validar que no hay errores
+==== Enfoque estático
 
----
+Con este enfoque buscamos errores o defectos sin la necesidad de ejecutar el sistema.
 
-== 5. Enfoques de pruebas
+Consiste en realizar un análisis y comprobación de las representaciones del sistema como el documento de requerimientos, los diagramas de diseño y el código fuente del programa. Se aplica a todas las etapas del proceso de desarrollo.
 
-=== Enfoque estático
+Este enfoque se complementa con algún tipo de análisis automático del texto fuente o de los documentos asociados. En el caso del código, podemos analizarlo con ayudas de herramientas como Crucible, que permite una revisión del código colaborativa y el inicio de conversaciones en porciones específicas del código para dejar comentarios o anotaciones puntuales. La herramienta de repositorios GitHub también contiene un analizador de código que permite hacer una comparación entre código anterior y código agregado recientemente.
 
-- No ejecuta el código
-- Analiza documentos y código
+==== Enfoque dinámico
 
-=== Enfoque dinámico
+Con este enfoque buscamos errores o defectos ejecutando el software y observando su comportamiento en diferentes condiciones. A diferencia del enfoque estático, que trabaja sobre documentos o código sin correr el programa, el enfoque dinámico se centra en verificar si el sistema funciona como se espera cuando recibe entradas reales y se utiliza en un entorno de ejecución.
 
-- Ejecuta el software
-- Evalúa comportamiento
+Este tipo de pruebas permite comprobar tanto la funcionalidad como el rendimiento del sistema, ya que nos muestra cómo responde el software ante distintos datos, configuraciones y escenarios de uso. Dentro de este enfoque se incluyen las pruebas funcionales, de integración, de sistema, de aceptación y de rendimiento, entre otras.
 
----
+Para llevar adelante este enfoque es fundamental tener en cuenta los entornos de trabajo, ya que el software no siempre se ejecuta en las mismas condiciones en las que fue desarrollado.
 
-== 6. Diferencias entre enfoques
+==== ¿En qué se diferencian los enfoques?
 
-|===
-|Enfoque estático |Enfoque dinámico
+El enfoque estático y el enfoque dinámico son dos metodologías diferentes utilizadas en el proceso de pruebas de software, y se diferencian principalmente en cuándo y cómo se realizan las pruebas:
 
-|No ejecuta código
-|Ejecuta el sistema
+* *Enfoque estático:*
+** ¿Cuándo se aplica?: Se aplica durante las etapas iniciales del ciclo de desarrollo de software, antes de la ejecución del programa.
+** Método principal: Se centra en la revisión y análisis de los artefactos del software, como documentos de especificación, diagramas de diseño, y código fuente. No implica la ejecución del software.
+** Propósito: Identificar errores, inconsistencias, problemas de diseño y lógica en el software antes de que se ejecute, lo que ayuda a prevenir defectos en etapas posteriores del desarrollo.
 
-|Detecta errores temprano
-|Detecta errores en ejecución
-|===
+* *Enfoque dinámico:*
+** ¿Cuándo se aplica?: Se aplica durante la fase de ejecución del programa o aplicación.
+** Método principal: Implica la ejecución real del software bajo condiciones de prueba específicas. Se utilizan casos de prueba y escenarios para evaluar su comportamiento y rendimiento.
+** Propósito: Evaluar el funcionamiento real del software, descubrir defectos funcionales, identificar problemas de rendimiento y verificar si cumple con los requisitos especificados.
 
----
+[NOTE]
+====
+En resumen
 
-== 7. Entornos de desarrollo
+El enfoque estático se enfoca en la revisión y análisis sin ejecutar el software, mientras que el enfoque dinámico se concentra en la ejecución real del software para evaluar su comportamiento.
 
-=== Desarrollo
-- Programación
+Ambos enfoques son complementarios y se utilizan en diferentes etapas del proceso de desarrollo de software para garantizar la calidad y la fiabilidad del producto final.
+====
 
-=== Testing
-- Pruebas controladas
 
-=== Staging
-- Simulación de producción
+=== 8 Un escenario posible para un ciclo de desarrollo y despliegue de software
 
-=== Producción
-- Uso real
+Antes de avanzar en la descripción de cada entorno para el desarrollo de un software, les compartimos características en el contexto de un software de factura digital de la AFIP (Administración Federal de Ingresos Públicos de Argentina), en el que cada uno cumplen roles específicos en el ciclo de desarrollo y despliegue de software. A continuación, se describen las diferencias entre estos entornos:
 
----
 
-== 8. Niveles de pruebas
+- Entorno de desarrollo
 
-- Unitarias
-- Integración
-- Sistema
-- Aceptación
+* Propósito: Es el entorno donde los desarrolladores escriben y prueban el código del software. Aquí se realizan cambios y mejoras en el software.
+* Características:
+** No está conectado al sistema en producción.
+** Se utiliza para la programación, depuración y pruebas iniciales.
+** Puede ser un ambiente local en las computadoras de los desarrolladores o un servidor de desarrollo.
+** No está destinado a uso público ni a operaciones reales.
 
 ---
 
-=== 8.1 Pruebas unitarias
+- Entorno de prueba
+
+* Propósito: Se utiliza para probar el software en un ambiente controlado antes de implementarlo en producción. Aquí se validan las funcionalidades y se detectan errores.
+* Características:
+** Réplica del entorno de producción, pero aislado.
+** Se simulan escenarios de uso real.
+** Los datos de prueba se utilizan para probar la aplicación.
+** Se pueden realizar pruebas de rendimiento, seguridad y funcionalidad.
+** Los errores se identifican y corrigen antes de la implementación en producción.
+
+---
+
+- Entorno de pre-producción
+
+* Propósito: Es un entorno de transición entre el desarrollo y la producción. Se utilizan para realizar pruebas finales y asegurarse de que la aplicación esté lista para el entorno de producción.
+* Características:
+** Similar al entorno de producción, pero con datos y tráfico limitados.
+** Se realizan pruebas de integración, aceptación y validación.
+** Los usuarios finales o equipos de control de calidad pueden realizar pruebas.
+** Puede usarse para entrenamiento del personal.
+
+---
+
+- Entorno de producción
+
+* Propósito: Es el entorno en el que se ejecuta el software en operaciones reales y se utiliza por los usuarios finales.
+* Características:
+** Es el sistema en vivo que interactúa con los usuarios y procesa transacciones reales.
+** Debe ser altamente confiable, escalable y estar optimizado para el rendimiento.
+** Cualquier cambio o actualización debe pasar por los otros entornos antes de implementarse aquí.
+
+En el contexto de la factura digital de AFIP, estos entornos son fundamentales para garantizar que el software cumpla con los requisitos legales y funcione de manera óptima antes de utilizarse en producción, donde se generan y envían facturas y documentos fiscales de manera oficial. Los entornos de prueba y pre-producción permiten identificar errores y garantizar la integridad y la conformidad con las regulaciones fiscales antes de operar en el entorno de producción.
+
+==== 8.1. Entorno de desarrollo
+
+En el entorno de desarrollo se programa el software. Puede ser la computadora de la persona que programa el software o puede ser un servidor compartido por todos los/las desarrolladores accesible mediante una VPN (Virtual Private Network).
+
+Es el espacio de trabajo donde se desarrolla el código de nuestra aplicación y donde comprobaremos que nuestro código pueda ser compilado y ejecutado.
+
+La ventaja de este entorno es que los desarrolladores:
+
+* pueden instalar todos los paquetes que necesiten,
+* cambiar la distribución de las carpetas a gusto,
+* cualquier cambio que se realiza en un entorno de desarrollo quedará en el entorno de desarrollo hasta que el programador así lo decida,
+* las computadoras de los desarrolladores suelen ser relativamente potentes con unas especificaciones relativamente altas, por lo que el programa puede ser compilado y probado rápidamente y sin demoras.
+
+==== 8.2. Entorno de prueba o testing
+
+En el entorno de pruebas es donde el tester ejecuta las pruebas y busca errores de las funcionalidades que hayamos desarrollado.
+
+En este entorno no tendremos instaladas ninguna de las librerías y aplicaciones extra que pueda haber en un entorno de desarrollo, sólo debería tener el software necesario para que el programa funcione.
+
+El movimiento del código entre el entorno de desarrollo y el entorno de prueba debe ser extremadamente frecuente, ya que mientras más rápido se pruebe algo, se podrán encontrar los errores, podremos arreglarlos y llevarlo al entorno de producción.
+
+La principal ventaja de contar con un entorno de pruebas es la posibilidad de:
+
+* permitir a los administradores de la aplicación, a los clientes, u otros miembros del equipo, conocer el comportamiento de la aplicación, formación, y realizar pruebas y testing por el equipo de pruebas.
+
+El servidor de pruebas, no solo permite tener un entorno en el cual otros miembros del equipo pueden probar la aplicación, también posibilita consultar el comportamiento de la aplicación, cuando esta requiere recibir respuestas de otro servidor.
+
+Por ejemplo, si nosotros quisiéramos hacer un software que permita facturar, deberemos conectarnos con el software de facturación de AFIP para generar la factura. Si quisiéramos probar que nuestro software funciona bien utilizando el software real de AFIP, podríamos generar muchas ventas que luego impactarían negativamente en nuestra situación impositiva ya que AFIP no podrá distinguir entre ventas reales y ventas de pruebas. Es por eso que AFIP tiene disponible un entorno de pruebas, para que nosotros podamos probar nuestro software y generar facturas falsas que no impactarían realmente en AFIP.
+
+==== 8.3. Entorno de pre-producción o staging
+
+El entorno de pre-producción es el último entorno al que vamos a desplegar nuestra aplicación antes de que vaya a un entorno de producción. Este entorno tiene como objetivo emular el entorno de producción para probar el rendimiento de la aplicación, así como sus actualizaciones; queremos ver que funcione de forma eficiente y sin romper nada que ya estaba funcionando.
+
+Si bien el objetivo de este entorno es ser lo más parecido a producción posible, no siempre tenemos los recursos disponibles para lograr este objetivo. A veces simplemente no es posible recrear un entorno de producción.
+
+Un ejemplo de esto puede verse en el área de las telecomunicaciones, donde no tendremos satélites o cables telefónicos sólo para un entorno de pre-producción. Si queremos probar un software que maneja satélites, no podemos tener un “satélite de pre-producción” sólo para probar su software debido al elevado costo de manejar tal operación.
+
+==== 8.4. Entorno de producción
+
+Este entorno tiene su nombre ya que decimos que es un entorno “productivo”, es decir que el software se utiliza para algo productivo y no solo para que se realicen pruebas. Es lo que llamamos “el mundo real”, donde finalmente ejecutamos la aplicación y nuestros usuarios finales tendrán acceso al programa.
+
+Llamamos “pasaje a producción” o “pasar a producción” cuando actualizamos el entorno de producción para que contenga los últimos cambios al software. Es importante notar que estos entornos son muy difíciles de replicar, por lo que muchas veces encontramos defectos y problemas que no esperábamos encontrar.
+
+La dificultad de replicarlo está dada por la cantidad de tráfico, los usos no pensados que puedan darle los clientes al software, u otros programas instalados en la máquina del cliente que no son compatibles con nuestro software.
+
+Continuemos con el escenario de una factura digital.
+
+Supongamos que estamos tratando con un software de factura digital de AFIP (Administración Federal de Ingresos Públicos de Argentina) en un entorno de producción. Se llevarán a cabo una serie de actividades relacionadas con la operación en vivo del software o sistema, donde los usuarios finales interactúan con la aplicación para llevar a cabo sus tareas.
+
+. Generación y envío de facturas: En un entorno de producción, los contribuyentes utilizan el software para generar facturas electrónicas o comprobantes fiscales digitales de acuerdo con las regulaciones de la AFIP. Estas facturas se generan en tiempo real y se envían a los destinatarios, ya sea por correo electrónico o por medios electrónicos, según las normativas fiscales.
+. Registro de transacciones: El software registra todas las transacciones fiscales, incluyendo la emisión de facturas, notas de crédito, notas de débito y otros comprobantes fiscales. Cada transacción se almacena en una base de datos segura para su posterior consulta y auditoría.
+. Procesamiento de impuestos: El sistema calcula automáticamente los impuestos correspondientes a cada factura emitida. Esto incluye impuestos como el IVA, ingresos brutos, percepciones, retenciones y otros tributos locales. Los impuestos calculados se informan a la AFIP para su posterior liquidación y pago.
+. Almacenamiento y respaldo de datos: En un entorno de producción, se mantiene una copia de seguridad de todos los datos fiscales y transacciones realizadas. Esto garantiza la integridad de la información y permite la recuperación de datos en caso de pérdida o fallos en el sistema.
+. Interacción con la AFIP: El software interactúa con los sistemas de la AFIP para enviar información relevante, como la facturación electrónica, los pagos de impuestos y otros reportes fiscales requeridos. Esta interacción asegura que la empresa cumpla con las regulaciones fiscales vigentes.
+. Soporte a usuarios: En el entorno de producción, es esencial proporcionar soporte técnico y asistencia a los usuarios en caso de problemas técnicos, dudas sobre el uso del software o consultas relacionadas con las transacciones fiscales. El soporte ayuda a garantizar un funcionamiento continuo del sistema.
+. Auditorías y cumplimiento: Se realizan auditorías internas y, en ocasiones, auditorías externas para verificar el cumplimiento de las regulaciones fiscales y la integridad de los registros fiscales. Esto es fundamental para garantizar la legalidad y la exactitud de las operaciones.
+
+[NOTE]
+====
+En resumen
+
+Un entorno de producción es el escenario donde el software de facturación electrónica de AFIP se utiliza en operaciones en vivo para emitir facturas, gestionar impuestos y cumplir con las obligaciones fiscales. El funcionamiento correcto y eficiente en este entorno es esencial para las empresas y para garantizar el cumplimiento de las regulaciones fiscales.
+====
+
+=== 9. Niveles y tipos de pruebas
+
+Las pruebas desempeñan un papel fundamental en el desarrollo de software, contribuyendo a la calidad, confiabilidad y seguridad de las aplicaciones. Para comprender completamente cómo funcionan las pruebas, es importante explorar los diferentes niveles y tipos de pruebas disponibles. En este contexto, nos adentraremos en el mundo de las pruebas de software y, para empezar, plantearemos cuatro preguntas clave que nos ayudarán a entender mejor este aspecto esencial del proceso de desarrollo:
+
+. ¿Qué son los niveles de pruebas y por qué son importantes? Exploraremos cómo las pruebas se organizan en diferentes niveles, desde pruebas unitarias hasta pruebas de aceptación del usuario, y cómo cada nivel aborda aspectos específicos del software.
+. ¿Cuáles son los tipos de pruebas más comunes? Examinaremos una variedad de tipos de pruebas, como pruebas funcionales, pruebas de rendimiento, pruebas de seguridad y más. Cada tipo se enfoca en aspectos particulares del software.
+. ¿Cuándo se llevan a cabo las pruebas en el ciclo de desarrollo de software? Analizaremos en qué etapas del desarrollo se realizan las pruebas y por qué es crucial integrarlas a lo largo de todo el proceso.
+. ¿Cómo se seleccionan las pruebas adecuadas para un proyecto específico? Discutiremos cómo elegir las técnicas y herramientas de pruebas que se adapten a las necesidades particulares de un proyecto, teniendo en cuenta su entorno y requisitos.
+
+Estas preguntas nos servirán de base para explorar en detalle los niveles y tipos de pruebas en el desarrollo de software, y cómo contribuyen al éxito y la calidad de las aplicaciones.
+
+=== ¿Cuáles son los niveles de prueba?
+
+Conocer y comprender los diferentes niveles de pruebas en el desarrollo de software resulta fundamental para garantizar la calidad y fiabilidad de cualquier producto final. ¿Por qué? Pues, permite reducir riesgos y costos asociados con errores detectados tarde en el ciclo de desarrollo. Por lo tanto, la comprensión de los niveles de prueba permitirá una planificación adecuada de las mismas y una mejora continua en el proceso de desarrollo de software.
+
+Cada nivel de prueba tiene un propósito específico y se lleva a cabo en una etapa particular del ciclo de desarrollo de software.
+
+En esta oportunidad, nos detendremos en cuatro niveles:
+
+* pruebas unitarias,
+* pruebas de integración,
+* pruebas de sistemas,
+* pruebas de aceptación.
+
+Los niveles de pruebas están asociados al “qué” se prueba, pero considerando el sistema como un conjunto de partes. Cada nivel de pruebas se enfoca en un nivel de composición de partes del sistema.
+
+==== 10.1 Pruebas unitarias
+
+Este nivel de pruebas se enfoca en componentes (métodos, funciones) de forma aislada. Es decir, la prueba se hace para métodos o funciones individuales.
+
+No requieren tener la totalidad del sistema terminado porque se prueba sólo el método bajo análisis. Si consideramos un auto, una prueba unitaria sería aquella que se enfoca en las ruedas.
+
+Realicemos una caracterización general:
+
+* son las pruebas más rápidas de ejecutar
+* proveen retroalimentación más rápido, porque tan pronto se ejecuta la prueba se sabe si falló o no
+* son las más eficaces a la hora de detectar el componente exacto donde hay un error en el código
+* se realizan en el entorno de desarrollo por las mismas personas que escriben el código y pueden ser automatizadas
+
+Para entenderlo mejor podemos analizar este ejemplo. Si tenemos un método como el siguiente:
 
 [source,java]
 ----
 public int sumar(int a, int b) {
+
     return a + b;
+
 }
 ----
 
-Ejemplo:
+Entonces una prueba unitaria declararía a con un valor y b con otro, y vería que se obtenga el resultado correcto.
+
+Esto se haría de la siguiente forma:
 
 [source,java]
 ----
-assertEquals(15, sumar(5,10));
+int a = 5
+int b = 10
+@Test
+assertEquals(15,sumar(a,b));
 ----
 
----
+Esta prueba es lo que llamamos un pseudocódigo, es decir que no es exactamente código, sino que imita al código sin pertenecer a ningún lenguaje en particular.
 
-=== 8.2 Pruebas de integración
+En la prueba vemos que declaramos con números específicos a las variables a y b. Luego las enviamos por parámetro al método sumar() y comparamos que el resultado del método sea el que debería ser.
 
-- Validan interacción entre componentes
 
----
+==== 10.2 Pruebas de integración
 
-=== 8.3 Pruebas de sistema
+Este nivel se enfoca en la combinación de diferentes componentes. Se centra en la interacción de los componentes del software y en buscar errores cuando unimos las partes que hemos desarrollado.
 
-- Validan sistema completo
+Volviendo al ejemplo del auto, una prueba de integración sería para todo el sistema de transmisión que incluye las llantas, el embrague, la caja de cambios, el diferencial, etc.
 
----
+Analicemos sus características:
 
-=== 8.4 Pruebas de aceptación
+* no son tan rápidas como las pruebas unitarias porque requiere construir una versión del sistema que incluye todos los componentes a probar.
+* pueden ser realizadas por los/as desarrolladores/as que están escribiendo el código y también pueden ser automatizadas.
 
-- Validación por el usuario
+Retomando el ejemplo del auto, si utilizamos el módulo del acelerador y sabemos que el auto está avanzando a una velocidad de 60 km/h, entonces cuando vamos al módulo del tablero de mando, la aguja del velocímetro deberá reflejar esos 60 km/h.
 
----
+Cualquier estrategia de prueba de versión o de integración debe ser incremental, para lo que existen dos esquemas principales:
 
-== 9. Tipos de pruebas
+* *Integración de arriba hacia abajo (top-down)* donde se prueban primero los componentes de más alto nivel y se va avanzando hacia los de más bajo nivel. Esto significa que primero desarrollamos las interfaces entre subsistemas, las que retornan valores que son controlados, y posteriormente se reemplaza con el código real; esto permite probar el flujo completo en niveles superiores antes, y luego ir a niveles inferiores.
 
-. Tests de operación
-. Tests de performance
-. Tests de escala
-. Tests de sobrecarga
-. Tests negativos
-. Tests basados en requerimientos
-. Tests ergonómicos
-. Tests de documentación
-. Tests de aceptación
+* *Integración de abajo hacia arriba (bottom-up)* donde se prueban primero los componentes de más bajo nivel y se va avanzando hacia los de más alto nivel.
+
+Los módulos o subsistemas críticos deben ser probados lo antes posible para encontrar errores críticos para el software rápidamente.
+
+Entonces podemos decir que debemos ir conectando de a poco las partes del software que tenemos e ir probando una a una para encontrar errores de forma ordenada.
+
+
+==== 10.3 Pruebas de sistemas
+
+En este nivel se prueba el sistema como un todo.
+
+En el ejemplo del auto, probaríamos el auto completo.
+
+Las pruebas de sistema se pueden hacer de forma granular, es decir, casos de uso/funcionalidades individuales, o combinando flujos completos de inicio a fin. Si seguimos los principios de las pruebas, este nivel debería hacerlo alguien diferente a quien desarrolló el software. Si bien estas pruebas pueden automatizarse, no es tan común hoy en día.
+
+También se intenta determinar si el sistema en su globalidad opera satisfactoriamente. Con esto no nos referimos sólo a la funcionalidad sino también a cuestiones de recuperación de fallas, seguridad, pruebas de estrés y pruebas de performance.
+
+Como se mencionó anteriormente, el entorno de pre-producción, en el que se hacen las pruebas de sistema debe ser lo más parecido posible al entorno en el cual se usará el software en el día a día. Si los entornos son muy diferentes, es posible que se encuentren errores que en su uso normal no existirían, o aun peor, que no se encuentren errores que sí se encontrarían en su entorno normal de uso.
+
+Si bien se aspira a esta similitud, muchas veces no es posible anticipar las necesidades ni condiciones de uso reales.
+
+Es posible hacer un software de ventas online que considere que miles de personas accederán al sitio, pero si el negocio tiene un Hot Sale o descuento por fiestas, el tráfico crecerá de una manera que no se puede anticipar y colapsará el sistema. Estos casos no necesitan ser tan extremos como el caso de un Hot Sale, muchas veces ocurrirá que no encontraremos defectos que sí hallaremos en producción.
+
+
+==== 10.4 Pruebas de aceptación
+
+Se prueba el sistema como un todo, pero en este caso en condiciones reales de uso.
+
+En el ejemplo del auto, sería conducir por las sierras de Córdoba, la ruta 40 o la avenida 9 de Julio en hora pico.
+
+Estas pruebas:
+
+* son las más costosas de realizar.
+* es más difícil encontrar el lugar exacto del código donde se generó el error.
+* son realizadas por el cliente o los usuarios del software para que determinen si el software se ajusta a sus necesidades.
+
+El objetivo de las pruebas de aceptación es establecer confianza en el sistema, las partes del sistema o las características específicas y no funcionales del sistema. Encontrar defectos no es el foco principal en las pruebas de aceptación, cualquier error o defecto encontrado en esta etapa es extremadamente costoso.
+
+Comprende tanto la prueba realizada por el usuario en ambiente de laboratorio (pruebas alfa), como la prueba en ambientes de trabajo reales (pruebas beta).
+
+=== 10. Algunos tipos de prueba
+
+Se tienen muchos tipos de pruebas distintos que permiten asegurar una calidad mínima en el software que estaremos probando. Ninguno de ellos es independiente de otros ni mutuamente excluyentes; en un proceso de pruebas completo deberíamos utilizar varios tipos en combinación.
+
+. *Tests de operación:* Es el tipo más común. El sistema es probado en operación normal. Mide la confiabilidad del sistema y se pueden obtener mediciones estadísticas.
+
+. *Tests de performance o de capacidad:* El objetivo de esta prueba es medir la capacidad de procesamiento del sistema. Los valores obtenidos son comparados con los requeridos.
+
+. *Tests de escala completa:* Ejecutamos el sistema al máximo, todos los parámetros enfocados a valores máximos, todos los equipos conectados, usados por muchos usuarios ejecutando use cases simultáneamente. Si un sistema está hecho para ser usado por 1000 usuarios simultáneos, entonces esta prueba busca probar qué ocurre cuando tenemos esos 1000 usuarios simultáneos.
+
+. *Tests de sobrecarga:* Cumple la función de determinar cómo se comporta el sistema cuando es sobrecargado. No se puede esperar que supere esta prueba, pero sí que no se venga abajo, que no ocurra una catástrofe. Cuántas veces se cayó el sistema es una medida interesante. Si tomamos el sistema de 1000 usuarios de la prueba de Escala Completa, este sistema prueba qué ocurre cuando tenemos 1001 usuarios en simultáneo, podemos realizar este tipo de prueba con tanta sobrecarga como queramos y necesitemos probar.
+
+. *Tests negativos:* El sistema es sistemática e intencionalmente usado de forma incorrecta. Este maltrato debe ser planeado para probar casos especiales y así asegurar la tolerancia a fallos.
+
+. *Tests basados en requerimientos:* Estos tests son los que pueden rastrearse, directamente desde la especificación de requerimientos.
+
+. *Tests ergonómicos:* Son muy importantes si el sistema será usado por gente inexperta. Se prueban cosas como:
+** Consistencia de la interfaz.
+** Consistencia entre las interfaces de los distintos use cases.
+** Si los menús son lógicos y legibles.
+** Si se entienden los mensajes de falla.
+
+. *Tests de documentación del usuario:* Con el estilo y características del anterior, se prueba la documentación del sistema.
+
+. *Test de aceptación:* Este test es ejecutado por la organización que solicita el sistema. El sistema es probado en un entorno real, usualmente llamado Alfa. Genera la aceptación o no del sistema. Cuando no hay un usuario que solicita el producto, se usan las pruebas Beta, que son encargadas a clientes selectos antes de liberar la versión.
+
 == Semana 4 - Clase Sincrónica
 
 === Bug Advocacy
