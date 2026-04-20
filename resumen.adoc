@@ -153,7 +153,7 @@ Los objetivos de una organización no están orientados a la fiabilidad ni a la 
 
 ==== 3.4. Principio 4: Inspeccionar
 
-===  proceso de pruebas debe incluir una *inspección de los resultados* de cada prueba.
+proceso de pruebas debe incluir una *inspección de los resultados* de cada prueba.
 
 Esto implica:
 
@@ -164,6 +164,7 @@ Esto implica:
 Cuando se realizan múltiples rondas de pruebas, es común que en las últimas aparezcan defectos que no fueron detectados en las primeras.
 
 [NOTE]
+
 ====
 La inspección de resultados es clave para validar la calidad del testing. No basta con ejecutar pruebas, es necesario analizar sus resultados de forma crítica.
 ====
