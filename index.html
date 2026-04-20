@@ -456,27 +456,78 @@ El testing es el proceso de ejecutar un programa con la intención de encontrar 
 <div class="sect1">
 <h2 id="_3_principios_de_testing">3. Principios de testing</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Los procesos de prueba son un conjunto de actividades que se describen en la siguiente figura:</p>
+</div>
 <div class="sect2">
 <h3 id="_principio_1_definir">Principio 1: Definir</h3>
 <div class="paragraph">
 <p>Una parte necesaria de un caso de prueba es la definición del resultado esperado.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Componentes de un caso de prueba:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Entrada</p>
-</li>
-<li>
-<p>Resultado esperado</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Este principio puede parecer obvio, pero ignorarlo es uno de los errores más frecuentes que se realizan en las empresas. Si el resultado esperado no se ha definido en un caso de prueba, entonces es muy probable que un resultado erróneo sea interpretado como correcto.</p>
 </div>
+<div class="paragraph">
+<p>Para combatir este fenómeno, un caso de pruebas debe tener 2 componentes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Una descripción detallada de la información de entrada del programa o función.</p>
 </li>
-</ul>
+<li>
+<p>Una descripción precisa de los resultados esperados para el programa o función para esos datos específicos.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Para este principio podríamos considerar el siguiente caso de prueba:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Debemos probar un programa de una calculadora y vamos a comenzar por la función suma. Esta función toma 2 valores, los suma entre ellos y retorna el resultado de la suma. Una descripción detallada de la entrada nos diría que el valor 1 es 5 y el valor 2 es 10. Una descripción precisa de los resultados esperados es 15. Por lo que probaremos la función con esas entradas y esperaremos que la respuesta sea un 15, para decir que funciona como corresponde. Otro ejemplo de este principio con el mismo programa, podría ser que el valor ingresado 1 es igual a 5 y el valor ingresado 2 es igual a “Hola”, aquí notamos que “Hola” no es valor numérico, por lo que no podemos realizar la suma.</p>
+</div>
+<div class="paragraph">
+<p>Esto quiere decir que nuestro resultado esperado es un mensaje que diga “Error. Ambos valores deben ser numéricos para poder sumarlos”. En caso de que nuestro programa no muestre ese mensaje específico (porque no emite mensajes o muestra otro mensaje distinto) entonces podemos decir que falla la prueba y nuestro programa debe ser arreglado.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Les compartimos una representación de cómo podrías realizar pruebas de la función de suma.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python">def suma(valor1, valor2):
+    if isinstance(valor1, (int, float)) and isinstance(valor2, (int, float)):
+        return valor1 + valor2
+    else:
+        return "Error. Ambos valores deben ser numéricos para poder sumarlos."
+
+# Prueba 1: Valores numéricos válidos
+resultado = suma(5, 10)
+if resultado == 15:
+    print("La prueba 1 pasó. El resultado es 15.")
+else:
+    print("La prueba 1 falló. El resultado es:", resultado)
+
+# Prueba 2: Valor no numérico
+resultado = suma(5, "Hola")
+if resultado == "Error. Ambos valores deben ser numéricos para poder sumarlos.":
+    print("La prueba 2 pasó. Se emitió el mensaje de error correctamente.")
+else:
+    print("La prueba 2 falló. El resultado es:", resultado)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Este código realiza dos pruebas: una con valores numéricos válidos y otra con un valor no numérico. Dependiendo de si el programa emite el resultado esperado o el mensaje de error correcto, puedes determinar si la función de suma se comporta como se espera.</p>
 </div>
 </div>
 <div class="sect2">
@@ -484,53 +535,365 @@ El testing es el proceso de ejecutar un programa con la intención de encontrar 
 <div class="paragraph">
 <p>Un programador debe evitar probar su propio programa.</p>
 </div>
+<div class="paragraph">
+<p>Cualquier escritor/a sabe que es una mala idea intentar corregir sus propios escritos. Sabe qué es lo que debe decir, por lo que no reconoce cuándo, en realidad, dice otra cosa. Además, un desarrollador/escritor no quiere realmente encontrar errores en su propio trabajo. Lo mismo aplica para aquellas personas que escriben software. Otro problema es que cuando una persona que escribe un código con una mirada constructiva, va a tener problemas para mirar su código con un ojo destructivo para encontrar problemas.</p>
+</div>
+<div class="paragraph">
+<p>Además de este problema asociado a la psicología, muchos de los defectos y problemas del software pueden ocurrir por un mal entendimiento del negocio o de los requerimientos. Si este es el caso, entonces el programador/a no podrá encontrar esos errores, incluso si quisiera.</p>
+</div>
+<div class="paragraph">
+<p>Es por estas cuestiones que existe este principio:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Una persona que programa puede probar su propio código, pero no lo hará de una manera tan efectiva ni eficiente como alguien más. Sí es importante notar que una vez que los errores y defectos fueron encontrados, lo mejor es que el/la desarrollador/a que escribió el programa sea la persona indicada para arreglarlos.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_principio_3_probar">Principio 3: Probar</h3>
 <div class="paragraph">
 <p>Una organización de programación no debería probar sus propios programas.</p>
 </div>
+<div class="paragraph">
+<p>Este principio es similar al anterior. Cualquier organización dedicada a la programación tiene los mismos problemas que una persona, tanto mentales como de conocimiento del negocio.</p>
+</div>
+<div class="paragraph">
+<p>Además, se agrega el problema de los objetivos y métricas de las organizaciones de software; generalmente estos objetivos están ligados a tiempos de entrega y costos de los programas. Los tiempos y costos son simples y fáciles de medir, mientras que la calidad y fiabilidad de un software es algo extremadamente difícil de medir.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Los objetivos de una organización no están orientados a la fiabilidad ni a la calidad del software, es probable que no hagan pruebas que realmente encuentren errores, ya que encontrar errores suele retrasar los tiempos de entrega y aumentar los costos de un proyecto.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_principio_4_inspeccionar">Principio 4: Inspeccionar</h3>
 <div class="paragraph">
-<p>Cualquier proceso de pruebas debe incluir una inspección de los resultados.</p>
+<p>Cualquier proceso de pruebas debe incluir una inspección de los resultados de cada prueba que implica:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hacer un análisis de los resultados de las pruebas para revisar que efectivamente se esté testeando de forma precisa.</p>
+</li>
+<li>
+<p>ver que los defectos que se reportan sean realmente defectos,</p>
+</li>
+<li>
+<p>observar que se encuentra la mayor cantidad de defectos posibles.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si se hacen muchas rondas de pruebas, es probable que las últimas encuentren defectos que no se encontraron en las pruebas originales.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Por ejemplo:</p>
+</div>
+<div class="paragraph">
+<p>Imagina que estás probando una aplicación de comercio electrónico. Una de las pruebas consiste en verificar si los productos se agregan al carrito de compras correctamente. Después de ejecutar la prueba, inspeccionas los resultados y encuentras un error. La aplicación no muestra el mensaje de confirmación cuando se agrega un producto al carrito.</p>
+</div>
+<div class="paragraph">
+<p>Este hallazgo es crucial, ya que sin el mensaje de confirmación, los usuarios pueden pensar que sus productos no se han agregado, lo que afecta la experiencia del usuario y las ventas. Identificar este problema durante la inspección de resultados te permite informar a los/as desarrolladores/as para que lo corrijan antes del lanzamiento de la aplicación, garantizando así una experiencia de usuario fluida.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_5_escribir">Principio 5: Escribir</h3>
 <div class="paragraph">
-<p>Los casos de prueba deben escribirse para entradas válidas e inválidas.</p>
+<p>Los casos de prueba deben escribirse para condiciones de entrada que son inválidas e inesperadas, así como también para las válidas y esperadas.</p>
+</div>
+<div class="paragraph">
+<p>Hay una tendencia natural cuando se prueba un programa a concentrarse en lo que es válido y las condiciones de entrada esperadas, y evitar probar las condiciones inválidas e inesperadas.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Por ejemplo, evitamos probar condiciones que darán mensajes de error.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si necesitamos que el usuario ingrese un número entre el 1 y el 10, entonces deberemos probar una entrada válida y esperada (un número del 1 al 10), pero también deberemos probar las entradas inválidas (un número negativo o un número mayor a 10).</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Muchos de los defectos de los softwares se encuentran cuando los usuarios lo utilizan de formas que no son correctas y que, probablemente, no se nos hubieran ocurrido durante el desarrollo. Una persona experta en pruebas intenta buscar esas formas incorrectas y procura pensar como los usuarios del software.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_6_examinar">Principio 6: Examinar</h3>
 <div class="paragraph">
-<p>Examinar un programa implica verificar:
-- lo que hace
-- lo que NO debería hacer</p>
+<p>Examinar un programa para ver si no hace lo que debe hacer es sólo la mitad del trabajo, la otra mitad es ver que el programa no haga lo que no debe hacer.</p>
+</div>
+<div class="paragraph">
+<p>En el principio 5 hablamos de probar todas las posibles entradas para verificar que nuestro software funciona correctamente; pero algo extremadamente importante, que muchos olvidan, es probar que el software no haga nada que no debe hacer.</p>
+</div>
+<div class="paragraph">
+<p>Si el software no tiene errores para las funcionalidades que debe hacer, pero también tiene funcionalidades que no debería hacer, entonces no está funcionando como corresponde.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Por ejemplo, un programa que ejecuta pagos de sueldos a empleados de una empresa que hace bien todos los pagos, pero que también genera cheques para empleados que no existen, no funciona como debe funcionar y tiene errores a arreglar. ¿Cuáles podrían ser los errores a arreglar?</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generación de cheques para empleados inexistentes: Este es un error crítico, ya que se están generando pagos para empleados que no existen en el sistema. Debería implementarse una validación para asegurarse de que solo se realicen pagos a empleados registrados y activos en la empresa.</p>
+</li>
+<li>
+<p>Falta de verificación de la base de datos de empleados: El programa debería tener un mecanismo de verificación que compare la lista de empleados a pagar con la base de datos de empleados existentes. Esto garantizará que no se realicen pagos a empleados que no estén registrados.</p>
+</li>
+<li>
+<p>Falta de controles internos: El programa debe implementar controles internos efectivos para garantizar que los procesos de pago sean precisos y seguros. Esto incluye la revisión de datos y validación antes de realizar pagos.</p>
+</li>
+<li>
+<p>Informes y auditoría: Debe haber una funcionalidad de generación de informes y auditoría que permita rastrear y analizar los pagos realizados, identificar cualquier pago incorrecto o fraudulento y realizar un seguimiento de las transacciones.</p>
+</li>
+<li>
+<p>Seguridad de datos: Asegurarse de que los datos de los empleados y los detalles de los pagos estén protegidos adecuadamente para evitar posibles brechas de seguridad.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Corregir estos errores es fundamental para garantizar que el programa funcione como se espera y que los pagos de sueldos se realicen de manera precisa y segura.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_7_no_improvisar">Principio 7: No improvisar</h3>
 <div class="paragraph">
-<p>Evitar casos de prueba improvisados.</p>
+<p>Evitar los casos de prueba improvisados.</p>
+</div>
+<div class="paragraph">
+<p>En ciertos tipos de empresas, es una práctica común sentarse a probar un software de forma improvisada e inventando casos de prueba a medida que se hacen las pruebas. El mayor problema con esta forma de trabajo es que, definir los casos de prueba, implica una gran inversión de tiempo y dinero; si no registramos esos casos, estamos desechando nuestra inversión. Si necesitamos volver a probar ese software, precisaremos definir nuevos casos de prueba, que incluso serán distintos a los primeros y pueden probar diferentes cosas.</p>
+</div>
+<div class="paragraph">
+<p>Por lo general, re-definir los casos de prueba conlleva mucho esfuerzo, por lo que los nuevos casos de prueba no suelen ser tan exhaustivos como los primeros. Si en la corrección de otros errores se introducen nuevos errores, es muy probable que los nuevos casos de prueba no los identifiquen. Esto se debe a que las personas, generalmente, irán a probar las partes del software que fallaban, no las que funcionaban bien.</p>
+</div>
+<div class="paragraph">
+<p>Guardar los casos de prueba que definimos y ejecutarlos en su completitud, luego de cambios al software, es lo que llamamos pruebas de regresión. En estas pruebas de regresión volvemos a ejecutar todos los casos de prueba, incluso si anteriormente no habían tenido errores.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_8_asumir">Principio 8: Asumir</h3>
 <div class="paragraph">
-<p>No se deben planear pruebas asumiendo que no habrá errores.</p>
+<p>No se deben planear procesos de pruebas asumiendo que no se encontrarán errores.</p>
+</div>
+<div class="paragraph">
+<p>Este es un error que se da cuando no se comprende la definición del testing, un proceso de ejecutar un programa con la intención de encontrar errores.</p>
+</div>
+<div class="paragraph">
+<p>Es un error muy común para muchos directores de proyectos que esperan terminar su proyecto de software lo más rápido y barato posible, evitando pruebas que encuentren errores.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Imaginá que una líder de proyecto está a cargo de desarrollar un software importante con un presupuesto ajustado y un plazo de entrega apretado. En un esfuerzo por completar el proyecto lo más rápido y económico posible, el director de proyecto decide omitir pruebas exhaustivas y evitar actividades de testing que puedan encontrar errores.</p>
+</div>
+<div class="paragraph">
+<p>En lugar de realizar pruebas rigurosas, el equipo de desarrollo lanza el software sin una validación adecuada. Como resultado, el software se lanza al mercado con múltiples errores y deficiencias no detectadas, lo que genera una gran cantidad de quejas de los usuarios y problemas operativos.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Este ejemplo ilustra cómo la omisión o la reducción de pruebas en un proyecto de software puede ser un error costoso a largo plazo. A pesar de la intención inicial de ahorrar tiempo y dinero, la falta de pruebas adecuadas puede resultar en gastos adicionales para corregir errores, dañar la reputación de la empresa y afectar la satisfacción del cliente. Es un recordatorio de la importancia de no escatimar en el proceso de testing y de considerar las pruebas como una inversión en la calidad y la fiabilidad del software.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_9_encontrar">Principio 9: Encontrar</h3>
 <div class="paragraph">
-<p>La probabilidad de encontrar errores es proporcional a los ya encontrados.</p>
+<p>La probabilidad de que existan más errores en una sección del programa es proporcional a la cantidad de errores ya encontrados en esa sección.</p>
+</div>
+<div class="paragraph">
+<p>Este fenómeno puede parecer un sinsentido, pero es una heurística que se cumple en la mayoría de los programas. Por lo general, cuando encontramos muchos errores o defectos en un software quiere decir que no está hecho con una gran calidad, por lo que es probable encontrar aún más.</p>
+</div>
+<div class="paragraph">
+<p>Se puede decir que los errores o defectos vienen en grupos y que hay algunas secciones de los programas que tienden a tener más errores que otras. Teniendo esto en cuenta, podemos ver dónde centrarnos cuando estamos probando un software. Si encontramos muchos errores en una sección del software que estamos probando, entonces es un indicio de que debemos seguir probándolo para encontrar aún más errores.</p>
+</div>
+<div class="paragraph">
+<p>Analicemos la sección en un software de administración de una clínica de salud con muchos errores podría ser la sección de "Programación de Citas".</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Esta sección tiende a ser propensa a errores debido a su complejidad y a la gran cantidad de interacciones que involucra.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Errores comunes en la sección de "Programación de Citas" podrían incluir:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Doble reserva: El software permite programar dos citas en el mismo horario para un mismo médico, lo que resulta en conflictos de programación.</p>
+</li>
+<li>
+<p>Citas perdidas: Las citas programadas pueden desaparecer o no registrarse adecuadamente en el sistema, lo que lleva a pacientes sin cita y tiempo perdido.</p>
+</li>
+<li>
+<p>Incompatibilidad de horarios: El software no verifica la disponibilidad del médico o de la sala de consulta, lo que puede resultar en citas programadas en momentos en que no hay recursos disponibles.</p>
+</li>
+<li>
+<p>Falta de notificaciones: El software no envía recordatorios de citas a los pacientes, lo que puede resultar en ausencias y una menor eficiencia en la gestión de citas.</p>
+</li>
+<li>
+<p>Interfaz de usuario confusa: Una interfaz de usuario poco intuitiva puede llevar a errores de entrada de datos por parte del personal administrativo.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Estos errores pueden agruparse en la sección de "Programación de Citas" debido a su naturaleza compleja y a menudo interconectada. La falta de validación adecuada, la ausencia de notificaciones y problemas de interfaz de usuario contribuyen a la acumulación de errores en esta sección del software de administración de la clínica de salud.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>En resumen</strong></p>
+</div>
+<div class="paragraph">
+<p>Corregir estos errores es esencial para garantizar un flujo de trabajo eficiente y una experiencia positiva para pacientes y personal administrativo.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_principio_10_ser_creativos">Principio 10: Ser creativos</h3>
+<div class="paragraph">
+<p>Probar es una tarea creativa e intelectualmente desafiante.</p>
+</div>
+<div class="paragraph">
+<p>La creatividad necesaria para probar un programa es bastante mayor que la creatividad necesaria para diseñar ese programa.</p>
+</div>
+<div class="paragraph">
+<p>Es imposible probar un software lo suficiente para garantizar la total ausencia de errores. A lo largo del curso estudiaremos metodologías para encontrar una cantidad numerosa de errores y para ayudarnos a que confeccionemos de casos de pruebas, pero todas estas metodologías requieren una gran cantidad de creatividad.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>¿En qué momentos se necesita la creatividad? reflexionemos sobre algunas razones:</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Diseño de escenarios: los/las integrantes de los equipos deben ser creativos al diseñar una variedad de escenarios y casos de prueba que cubran diferentes aspectos del software, desde situaciones típicas hasta casos de borde y situaciones inusuales.</p>
+</li>
+<li>
+<p>Identificación de posibles problemas: Los/las integrantes de los equipos deben pensar de manera creativa para identificar posibles problemas, defectos o vulnerabilidades en el software. Esto implica considerar cómo los usuarios pueden interactuar con el software de maneras imprevistas.</p>
+</li>
+<li>
+<p>Creación de datos de prueba: En algunos casos, los/las integrantes de los equipos deben ser creativos al generar datos de prueba que reflejen situaciones reales o escenarios específicos que pueden ser difíciles de reproducir.</p>
+</li>
+<li>
+<p>Escritura de informes detallados: La creatividad se requiere al redactar informes detallados de pruebas que describan claramente los problemas encontrados, los pasos para reproducirlos y cualquier información adicional relevante.</p>
+</li>
+<li>
+<p>Exploración de funciones ocultas: Los/las integrantes de los equipos a menudo deben ser creativos al explorar funciones ocultas o poco documentadas del software, lo que puede revelar problemas no detectados por los usuarios típicos.</p>
+</li>
+<li>
+<p>Pruebas de usabilidad: La creatividad es esencial al evaluar la usabilidad del software, ya que implica ponerse en el lugar del usuario y pensar en cómo mejorar la experiencia.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>En resumen</strong></p>
+</div>
+<div class="paragraph">
+<p>probar un software va más allá de simplemente seguir un conjunto de pasos predefinidos. Requiere un enfoque creativo para descubrir problemas, evaluar la usabilidad y garantizar que el software funcione de manera efectiva en una variedad de situaciones. La creatividad desempeña un papel fundamental en la identificación de problemas y la mejora de la calidad del software.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Probar es una tarea creativa.</p>
 </div>
@@ -1143,7 +1506,7 @@ El testing es el proceso de ejecutar un programa con la intención de encontrar 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-20 20:56:33 UTC
+Last updated 2026-04-20 21:20:28 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
