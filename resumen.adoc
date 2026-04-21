@@ -1044,7 +1044,7 @@ Los dos primeros métodos se estudiarán en profundidad y serán el foco de la s
 
 Los dos últimos serán mencionados y explicados de forma rápida debido a que requieren tiempo de experiencia para ser efectivos o conocimientos que no corresponden con los de un técnico superior en desarrollo de software.
 
-=== 8. Partición en clases de equivalencias
+=== 8. Método 1: Clases de equivalencia
 
 Hemos dicho anteriormente que un buen caso de prueba es uno que tiene una alta probabilidad de encontrar un defecto. También hemos establecido que una prueba exhaustiva de entradas es imposible. Es decir, que estamos limitados a un pequeño subconjunto de posibles entradas.
 
@@ -1125,6 +1125,152 @@ Si consideramos los envíos de Mercado Libre como un ejemplo, podemos identifica
 En el ejemplo de una contraseña de usuario, podemos tener una clase válida que sea “cadena de caracteres de entre 8 a 16 caracteres con al menos una letra mayúscula y una letra minúscula” y una clase inválida que sea “cadena de caracteres que no cumple con el formato”.
 
 Si tenemos un motivo para creer que el software no manejará de la misma manera distintos elementos de una clase de equivalencia, entonces debemos partir esa clase de equivalencia en otras clases más pequeñas que abarquen menos información.
+
+==== 8.2 y 8.3 Paso 2 y 3: Definición de los casos de prueba
+
+El segundo paso para el método de 1, es usar las clases de equivalencia para identificar y definir los casos de prueba. El proceso es el siguiente:
+
+. Asignar un número único a cada clase de equivalencia.
+. Escribir un caso de prueba cubriendo la mayor cantidad de clases de equivalencia válidas aún no cubiertas posibles. Hacer esto hasta cubrir todas las clases de equivalencia válidas.
+. Escribir un caso de prueba cubriendo una clase de equivalencia inválida aún no cubierta, sólo una. Hacer esto hasta cubrir todas las clases de equivalencia inválidas.
+
+El motivo para el tercer paso, es que a veces una entrada errónea puede enmascarar otra entrada inválida, dependiendo de cómo se haya escrito el código.
+
+Cuando escribimos los casos de prueba intentamos que sean “agnósticos” a la tecnología. Es decir, que no debería importarnos con qué tecnología han sido implementados ni de qué forma (si una selección usa un combobox o un autocomplete). Esto lo hacemos para ver qué es lo que esperamos del software a partir de ciertas entradas, no para ver cómo realmente está implementado.
+
+Para la descripción de los casos de prueba debemos especificar:
+
+* Nombre único: Nos ayudará a identificar un caso de prueba fácilmente. El nombre debe ser representativo del mismo, por ejemplo: compra de artículos exitosa utilizando tarjeta de crédito sin observaciones.
+* Precondiciones: Es el contexto que necesitamos para ejecutar una prueba. Generalmente lo podemos derivar de la especificación de requerimientos. Algunas precondiciones comunes son fecha en la que se ejecuta la prueba, artículos pre-cargados con toda la información necesaria para la ejecución (nombre, precio, modelo, etc.), usuario existente y logueado con permisos específicos, seleccionables a usar cargados, etc.
+* Pasos: Paso por paso a ejecutar durante la prueba. Para programas más “simples” (como veremos en el ejemplo que les compartimos más abajo) podemos tener un solo paso, pero la idea de un caso de prueba es que cualquiera pueda replicarlo en cualquier momento. Si no tenemos un paso a paso con los datos exactos a ingresar, entonces el caso de prueba no puede replicarse. Este paso a paso incluye el orden en el que el tester realiza cada cosa a hacer, así como también la información exacta a usar.
+* Resultados esperados: ¿Qué es lo que espero del sistema? Se deriva de clases de equivalencia de salida. Puede ser el envío de un e-mail, un mensaje en particular, el resultado de un cálculo.
+
+=== 9. Método 2: Análisis de valores límites
+
+La evidencia demuestra que los casos de prueba que se centran en examinar situaciones límite obtienen mejores resultados en comparación con aquellos que no lo hacen.
+
+Definición: Las condiciones límite son aquellas situaciones que están directamente en, justo por encima o justo por debajo de los límites de las clases de equivalencia de entrada o salida.
+
+El análisis de valores límite difiere de la técnica de partición de equivalencias de 2 maneras:
+
+. En vez de seleccionar cualquier elemento de una clase de equivalencia y tomarlo como representativo, el análisis de valores límite toma los elementos que están directamente al borde de la clase de equivalencia que se está probando.
+. Esta técnica no sólo se concentra en las condiciones de entrada, sino que también se derivan casos de prueba a partir de las condiciones de salida.
+
++
+____
+Por ejemplo, si tenemos un software que al finalizar el registro envía un e-mail, entonces “E-mail enviado al usuario registrado dando la bienvenida e informando su nombre de usuario y contraseña” será una clase de equivalencia válida de salida. Mientras que, si el usuario ingresa una contraseña no válida, la clase de equivalencia inválida de salida será “Mensaje de error que dice ‘La contraseña debe ser de entre 8 a 16 caracteres y contener al menos una mayúscula y una minúscula’”.
+____
+
+Es muy difícil presentar una “receta” para el análisis de valores límite ya que requiere un grado importante de creatividad y de especialización del problema a probar. Por lo tanto, recordando el principio 10 del proceso de testing, es importante la creatividad y estado mental, más que otra cosa.
+
+Sin embargo, se pueden dar algunos consejos que ayudarán en la técnica que veremos a continuación.
+
+==== 9.1 Consejos para el análisis de valores límites
+
+. Si una condición de entrada especifica un rango de valores, se debería escribir casos de prueba para los límites del rango. Así como también los valores inválidos que están justo en los límites del rango.
+
++
+____
+Si tenemos un campo con un dominio válido entre -1.00 y 1.00, entonces deberíamos tener casos de prueba que verifiquen las siguientes situaciones: -1, 1, -1.01 y 1.01.
+____
+
+. Si una condición de entrada especifica un número de valores, se deberían escribir casos de prueba para la cantidad mínima y máxima de valores, así como también una cantidad justo debajo de la mínima y justo por encima de la máxima.
+
++
+____
+Por ejemplo, si un software puede importar archivos de Excel de entre 1 a 10000 registros, entonces deberíamos probarlo con un Excel sin registros, con 1 registro, con 10000 registros y con 10001 registros.
+____
+
+. El consejo 1 también aplica para cada valor de salida posible.
+
++
+____
+Por ejemplo, si tenemos un software que liquida sueldos y debemos hacer deducciones impositivas, donde el mínimo es $0.0 y el máximo $5000, entonces debemos probar condiciones que resulten en una deducción negativa, una deducción de $0.0, una deducción de $5000 y una deducción mayor a $5000.
+____
+
+Es muy importante probar no sólo los límites de las entradas, sino también los límites de las salidas, ya que puede ocurrir que los límites de entrada no siempre tengan como resultado los límites de la salida.
+
+. El consejo 2 también aplica para cada condición de salida. Si nuestro software tiene un rango de resultados, entonces debemos probar las condiciones para que se den todos los resultados posibles.
+
++
+____
+Por ejemplo, si tenemos un software que busca artículos médicos y puede resultar en la muestra de entre 2 a 8 artículos, deberíamos probar ocasionar resultados donde muestre 1 artículo, 2 artículos, 8 artículos y 9 artículos.
+____
+
+. Si las entradas o salidas de un programa es un conjunto específico y pre-definido, entonces se debe prestar especial atención a los primeros y últimos elementos de las listas. Es importante notar que esto no siempre es posible.
+
++
+____
+Si tenemos una selección de género entre “Femenino”, “Masculino” y “No binario” entonces no existe un límite que esté primero o último para aplicar la técnica.
+____
+
+. Si alguna condición de entrada tiene condiciones particulares, como longitud del campo, peso de un archivo o algo similar, entonces realizar casos de prueba para esas condiciones válidas e inválidas.
+
++
+____
+Por ejemplo, si nuestro software soporta imágenes de hasta 2 Gb, entonces probar con una imagen de 2 Gb y con una imagen de 2.01 Gb.
+____
+
+. Finalmente, utilizar la creatividad y la inteligencia para encontrar qué otros límites pueden existir.
+
+==== 9.2 Ejemplos del método 2
+
+El ejemplo del campo que valida números del 1 al 10 puede mostrar perfectamente un análisis de valores límites. Para los valores de entrada podemos probar el número 0, el número 1, el número 10 y el número 11. Así tendríamos todos los casos límites cubiertos.
+
+Esta es una técnica extremadamente simple, que es muy fácil de utilizar incorrectamente. Las condiciones límites son muchas veces extremadamente sutiles, por lo que la identificación de las mismas requiere mucha atención y tiempo de pensamiento. Veremos algunas de esas sutilezas en los ejemplos a continuación.
+
+Para la especificación de casos de prueba utilizamos el mismo formato que vimos en la técnica de particiones de equivalencia:
+
+* Nombre único: Nos ayudará a identificar un caso de prueba fácilmente. El nombre debe ser representativo del mismo. Ejemplo: “compra de artículos exitosa utilizando tarjeta de crédito sin observaciones”.
+* Precondiciones: Es el contexto que necesitamos para ejecutar una prueba. Generalmente lo podemos derivar de la especificación de requerimientos. Algunas precondiciones comunes son fecha en la que se ejecuta la prueba, artículos pre-cargados con toda la información necesaria para la ejecución (nombre, precio, modelo, etc.), usuario existente y logueado con permisos específicos, seleccionables a usar cargados, etc.
+* Pasos: Paso por paso a ejecutar durante la prueba. Para programas más “simples” (como veremos en el ejemplo) podemos tener un solo paso, pero la idea de un caso de prueba es que cualquiera pueda replicarlo en cualquier momento. Si no tenemos un paso a paso con los datos exactos a ingresar, entonces el caso de prueba no puede replicarse. Este paso a paso incluye el orden en el que el tester realiza cada cosa a hacer, así como también la información exacta a usar.
+* Resultados esperados: ¿Qué es lo que espero del sistema? Se deriva de clases de equivalencia de salida. Puede ser el envío de un e-mail, un mensaje en particular, el resultado de un cálculo.
+
+==== 10 Método 3: Grafos de causa-efecto
+
+Este método se describirá de manera breve, ya que no se espera que los técnicos superiores en desarrollo de software tengan todas las herramientas necesarias para ejecutarla. Sin mencionar que es poco usada en el mercado laboral, al año 2022, por la complejidad que conlleva utilizarla. Se introducirá para que los estudiantes conozcan de la misma e investiguen por su cuenta por si desean hacerlo.
+
+____
+Los grafos permiten de una forma sistémica seleccionar qué condiciones utilizaremos para ejecutar los casos de prueba. También ayuda a evidenciar cuándo la especificación está incompleta o escrita de una forma ambigua.
+
+El grafo utiliza lógica de circuitos digitales, por lo que no veremos esta técnica ya que se requiere un conocimiento de lógica y álgebra de Boole, así como también conocimientos de la notación electrónica de circuitos.
+____
+
+Esta técnica se basa en descomponer el problema a probar en partes extremadamente pequeñas para trabajar con los grafos.
+
+Luego se identifican las causas y efectos de los comportamientos en la especificación.
+
+* Una causa es una entrada al sistema, que puede corresponderse con una condición externa o incluso una clase de equivalencia.
+* Un efecto es una condición de salida o una transformación del sistema.
+
+Las causas y efectos se leen detenidamente y se transforman a lógica de Boole utilizando los grafos, luego se utiliza tablas de verdad para determinar los casos de prueba necesarios para probar el software.
+
+=== 11. Método 4: Adivinación de defectos
+
+A veces ocurre que una persona parece naturalmente dotada para el testing de software. Sin utilizar ninguna metodología en particular, estas personas suelen tener la habilidad de encontrar errores.
+
+Una explicación para esto es que estas personas están utilizando, de manera inconsciente, una técnica de diseño de casos de prueba llamada adivinación de defectos.
+
+____
+Dado un programa en particular, las personas pueden conjeturar ciertos tipos de errores probables y luego diseñar casos de prueba en base a encontrar esos errores. Generalmente estas conjeturas se dan por intuición o, más a menudo, experiencia.
+____
+
+Es difícil dar un procedimiento para la adivinación de defectos, ya que es mayormente intuitiva y un proceso ad-hoc. La idea básica es enumerar todos los posibles errores o situaciones dada a errores, y luego escribir casos de prueba en base a esa lista.
+
+____
+Por ejemplo, la presencia del valor 0 en las entradas de un programa es una situación que se suele prestar para errores. Por lo tanto, escribiríamos casos de prueba donde ciertas entradas en particular reciben el valor 0 y ciertas salidas tienen como resultado el valor 0.
+____
+
+También podemos decir que en los casos donde una entrada o salida presenta una lista (por ejemplo, cantidad de valores en una lista en la cual queremos buscar), una gran cantidad de errores se encuentran cuando la lista está vacía o contiene sólo un elemento. Otra idea es identificar casos de prueba asociados a cosas que los desarrolladores podrían asumir al leer las especificaciones; especialmente relacionados a factores o condiciones omitidas, ya sea por error o porque el escritor de la especificación las consideraba obvias.
+
+Como no es posible dar un procedimiento para este método, podemos plantear algunas preguntas relacionadas al ejemplo del MTEST que no han surgido en la metodología de análisis de valores límites:
+
+. ¿El programa acepta una respuesta en blanco por parte de un estudiante?
+. ¿Qué pasa si tenemos un registro de tipo “2” (las preguntas) metido entre todos los registros de tipo “3” (los estudiantes)?
+. ¿Qué pasa si 2 estudiantes tienen el mismo legajo?
+. La mediana se calcula diferente según si tenemos una cantidad par o impar de valores, así que se podría probar el programa con ambos casos para ver que el cálculo se haga bien en ambos.
+. ¿Qué pasa si el campo “número de preguntas” está vacío?
+. ¿Qué pasa si en el campo “tipo” (donde debería ser 2 o 3) aparece otro número?
 
 == Semana 4 - Clase Sincrónica
 
