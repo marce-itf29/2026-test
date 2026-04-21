@@ -291,6 +291,30 @@ a {
 <li><a href="#_11_algunos_tipos_de_prueba">11. Algunos tipos de prueba</a></li>
 </ul>
 </li>
+<li><a href="#_semana_2">Semana 2</a>
+<ul class="sectlevel2">
+<li><a href="#_1_introducción">1. Introducción</a></li>
+<li><a href="#_2_estrategia_de_caja_negra">2. Estrategia de caja negra</a>
+<ul class="sectlevel3">
+<li><a href="#_2_1_caja_negra_pruebas_exhaustivas_de_entradas">2.1 Caja negra: pruebas exhaustivas de entradas</a>
+<ul class="sectlevel4">
+<li><a href="#_caso_de_prueba_1_un_valor_numérico">Caso de prueba 1: Un valor numérico</a></li>
+<li><a href="#_caso_de_prueba_2_compilador_de_c">Caso de prueba 2: Compilador de C++</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_3_estrategia_de_caja_blanca">3. Estrategia de caja blanca</a>
+<ul class="sectlevel3">
+<li><a href="#_3_1_falla_1_caminos_lógicos_grandes">3.1 Falla 1: Caminos lógicos grandes</a></li>
+<li><a href="#_3_2_falla_2_pruebo_todos_los_caminos_entonces_la_prueba_está_completa">3.2. Falla 2: pruebo todos los caminos, entonces la prueba está completa.</a></li>
+</ul>
+</li>
+<li><a href="#_4_historias_de_usuario">4. Historias de usuario</a></li>
+<li><a href="#_5_modelo_de_plantilla_de_historias_de_usuario">5. Modelo de plantilla de Historias de Usuario</a></li>
+<li><a href="#_6_pruebas_de_usuario">6. Pruebas de usuario</a></li>
+</ul>
+</li>
 <li><a href="#_semana_4_clase_sincrónica">Semana 4 - Clase Sincrónica</a>
 <ul class="sectlevel2">
 <li><a href="#_bug_advocacy">Bug Advocacy</a></li>
@@ -1788,6 +1812,377 @@ assertEquals(15,sumar(a,b));</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_semana_2">Semana 2</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_introducción">1. Introducción</h3>
+<div class="paragraph">
+<div class="title">Introducción a las estrategias de testing</div>
+<p>Si recordamos la definición de testing que vimos la semana anterior, veremos que la siguiente pregunta que se nos viene a la cabeza es:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>¿Podemos encontrar absolutamente todos los errores y defectos de un software?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>La respuesta a esta pregunta es no, incluso para programas triviales. En general es imposible encontrar todos los errores de un programa ya que requeriríamos tiempo y dinero casi infinito para lograrlo. Como no contamos con recursos infinitos, como testers queremos encontrar la mayor cantidad de errores con la menor cantidad de recursos posibles.</p>
+</div>
+<div class="paragraph">
+<p>Para lograr este objetivo debemos utilizar distintas estrategias para diseñar los casos de prueba. Las dos estrategias más comunes para lograr este objetivo son la estrategia de caja negra y la estrategia de caja blanca.</p>
+</div>
+<div class="paragraph">
+<p>Es importante notar que cuando hablamos de las estrategias de pruebas, hablamos de un enfoque dinámico del testing, ya que nos ayudarán a diseñar casos de prueba que luego deberemos ejecutar para encontrar errores.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_estrategia_de_caja_negra">2. Estrategia de caja negra</h3>
+<div class="paragraph">
+<p>Definición: Esta estrategia de testing ve al programa como una caja negra, donde el comportamiento interno del software y su estructura no es importante. En vez de eso, se concentra en encontrar las circunstancias en las cuales un software no se comporta según su especificación.</p>
+</div>
+<div class="paragraph">
+<p>Con esta estrategia, la información de entrada de los casos de prueba se deriva únicamente de las especificaciones de requerimientos. Es decir, sin tener la ventaja del conocimiento de la estructura interna del programa.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/caja_negra.png" alt="caja negra">
+</div>
+<div class="title">Figure 1. Caja negra</div>
+</div>
+<div class="paragraph">
+<p>Figura 1: representación gráfica de caja negra</p>
+</div>
+<div class="sect3">
+<h4 id="_2_1_caja_negra_pruebas_exhaustivas_de_entradas">2.1 Caja negra: pruebas exhaustivas de entradas</h4>
+<div class="paragraph">
+<p>Si se quiere encontrar absolutamente todos los errores del programa usando esta estrategia, entonces la respuesta es probar con una cantidad exhaustiva de entradas. Esto quiere decir no sólo usar todas las entradas válidas, sino todas las entradas posibles.</p>
+</div>
+<div class="sect4">
+<h5 id="_caso_de_prueba_1_un_valor_numérico">Caso de prueba 1: Un valor numérico</h5>
+<div class="paragraph">
+<p>En el caso de un campo que debería tomar un valor numérico, deberíamos probarlo con todos los posibles valores desde el 0 hasta el número más grande que permita el lenguaje, pero también con todos los valores posibles inválidos, todas las letras, combinaciones de letras y combinaciones de letras y números permitidas por el lenguaje de programación. Notaremos entonces, que para un solo campo esta es una cantidad casi infinita de casos de prueba. Aún más si pensamos que ningún programa en realidad tiene un solo campo, sino que tiene una combinación de entradas posibles.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_caso_de_prueba_2_compilador_de_c">Caso de prueba 2: Compilador de C++</h5>
+<div class="paragraph">
+<p>Si el caso de prueba 1 suena difícil, imagina la prueba exhaustiva de programas más grandes y complejos.</p>
+</div>
+<div class="paragraph">
+<p>Considerando un compilador de C, no sólo tendríamos que crear casos de prueba representando todos los programas válidos de C (un número casi infinito), sino que además tendríamos que considerar todos los programas inválidos de C++ (un número definitivamente infinito) para asegurarnos que el compilador detecte que son inválidos. Esto último es para probar que el compilador no haga algo que no debe hacer, compilar un programa sintácticamente incorrecto; tal como vimos en los principios de la semana 1.</p>
+</div>
+<div class="paragraph">
+<p>El problema se vuelve aún más grande y complicado para el software transaccional que utiliza bases de datos.</p>
+</div>
+<div class="paragraph">
+<p>Tomemos de ejemplo de un software de reservas de vuelos de una aerolínea, estas transacciones no sólo dependen de las entradas de un caso en particular, sino también de lo que ocurrió anteriormente. Si ya hay asientos reservados en un vuelo, no podemos permitir que se vuelvan a reservar. Es decir que no sólo debemos probar todas las transacciones válidas e inválidas, sino que tenemos que pensar en todas las posibles secuencias de transacciones.</p>
+</div>
+<div class="paragraph">
+<p>Podríamos seguir listando situaciones cada vez más complejas, pero el punto de la discusión es que la prueba exhaustiva es imposible. Podemos definir entonces 2 implicaciones:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>No podemos probar un software para garantizar que esté libre de errores (como habíamos visto en la semana 1).</p>
+</li>
+<li>
+<p>Una consideración fundamental a la hora de probar, es la económica.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Por lo tanto, no hay lugar para la prueba exhaustiva.</p>
+</div>
+<div class="paragraph">
+<p>El objetivo debería ser aumentar el rendimiento del testing maximizando el número de errores encontrado por un número finito de casos de prueba. Una parte de esto implica mirar el código y asumir algunas cosas respecto al software (en el ejemplo del campo que toma un valor numérico del 1 al 10, asumir que el número 1, 2 y 3 tendrán los mismos resultados).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_estrategia_de_caja_blanca">3. Estrategia de caja blanca</h3>
+<div class="paragraph">
+<p>Definición:  esta estrategia de testing ve el programa como una caja blanca, es decir que examina la estructura interna de un programa. Esta estrategia deriva casos de prueba a partir de la lógica del software, desafortunadamente ignorando la especificación de requerimientos.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/caja_blanca.png" alt="caja blanca">
+</div>
+<div class="title">Figure 2. Caja blanca</div>
+</div>
+<div class="paragraph">
+<p>Figura 1: representación gráfica de caja blanca</p>
+</div>
+<div class="paragraph">
+<p>El objetivo es, entonces, establecer una estrategia análoga a la prueba de entradas que mencionamos en la caja negra.</p>
+</div>
+<div class="paragraph">
+<p>Queremos causar que cada declaración en el programa se ejecute al menos una vez, pero no es difícil mostrar que esto será extremadamente complejo e inadecuado.</p>
+</div>
+<div class="paragraph">
+<p>Se suele considerar que si ejecutamos todos los posibles flujos de control del software, entonces ese software se ha probado por completo.</p>
+</div>
+<div class="sect3">
+<h4 id="_3_1_falla_1_caminos_lógicos_grandes">3.1 Falla 1: Caminos lógicos grandes</h4>
+<div class="paragraph">
+<p>Una de las fallas en la forma de pensar la estrategia de caja blanca es que el número de caminos lógicos de un programa puede ser astronómicamente grande.</p>
+</div>
+<div class="paragraph">
+<p>Para ilustrar esto, consideremos la figura 1 que se muestra debajo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/caminos_logicos.png" alt="caminos logicos">
+</div>
+<div class="title">Figure 3. Diagrama de control de caminos de un programa pequeño</div>
+</div>
+<div class="paragraph">
+<p>Figura: Diagrama de control de caminos de un programa pequeño</p>
+</div>
+<div class="paragraph">
+<p>Esta sería una representación de un programa trivial, es un diagrama de control de flujo del programa.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Cada nodo o círculo representa una declaración que se ejecuta de forma secuencial, posiblemente modificándose aún más.</p>
+</li>
+<li>
+<p>Cada arco representa la transferencia de control entre las declaraciones. El diagrama representa entonces entre 10 a 20 declaraciones de tipo FOR o WHILE que puede iterar hasta 20 veces.</p>
+</li>
+<li>
+<p>Dentro de cada declaración de tipo loop puede haber declaraciones de tipo IF.</p>
+</li>
+<li>
+<p>Determinar el número único de caminos, entonces, es equivalente a determinar la cantidad de formas únicas de moverse del punto a al punto b (asumiendo que las decisiones del software son independientes entre sí). Este número puede ser de más de 100 trillones de caminos.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">En resumen</div>
+<p>Con números tan altos no es difícil visualizar estos números, así que lo pongamos en una forma más concreta. Si pudiéramos escribir, ejecutar y verificar cada caso de prueba en 5 minutos, nos tomaría aproximadamente 100.000 millones de años probar cada camino. Si pudiéramos escribir, ejecutar y verificar cada caso de prueba en 1 segundo, nos tomaría 3.2 millones de años.</p>
+</div>
+<div class="paragraph">
+<p>Por supuesto, las decisiones en un software real no son independientes entre sí. Es decir que el número posible de caminos ejecutables sería bastante menor.</p>
+</div>
+<div class="paragraph">
+<p>Por otro lado, los programas reales suelen ser bastante más complejos que el programa que se muestra en la figura 1. Es decir, la prueba exhaustiva de caminos, al igual que la prueba exhaustiva de entradas, parece cada vez más impráctica, si no imposible.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_2_falla_2_pruebo_todos_los_caminos_entonces_la_prueba_está_completa">3.2. Falla 2: pruebo todos los caminos, entonces la prueba está completa.</h4>
+<div class="paragraph">
+<p>La segunda falla con la forma de pensar “si pruebo todos los caminos internos del software entonces la prueba esta completa” es que cada camino de ejecución del software puede probarse, pero el software aun así puede contener defectos.</p>
+</div>
+<div class="paragraph">
+<p>Existen 3 motivos para esto:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Una prueba exhaustiva de caminos no garantiza que el programa cumpla con su especificación.</p>
+<div class="paragraph">
+<p>Consideremos como ejemplo una rutina que ordene legajos de estudiantes por año de ingreso de los más nuevos a los más viejos. Si por error programamos una rutina que los ordene de forma inversa, la prueba exhaustiva de caminos nos aportará poco valor al error a encontrar. Podemos ordenar de forma perfecta a todos los estudiantes, pero ese software tiene un error fundamental: No es el software que se necesita. No cumple con sus especificaciones. La prueba de caminos no encontrará jamás este gran problema.</p>
+</div>
+</li>
+<li>
+<p>Un programa puede estar erróneo porque falta programar algunos caminos. La prueba exhaustiva de caminos no descubrirá este problema.</p>
+<div class="paragraph">
+<p>Si consideramos el software académico que discutíamos en el punto 1, si deberíamos poder buscar un alumno por legajo y eso se hace bien, podría faltar el camino del error. ¿Qué ocurre cuando no se encuentra un alumno? Este camino podría faltar porque el desarrollador no lo consideró, y una prueba exhaustiva de caminos nunca detectaría la falta de este camino en particular.</p>
+</div>
+</li>
+<li>
+<p>Una prueba de caminos exhaustiva puede no descubrir errores dados por los datos. Hay muchos ejemplos de este tipo de problemas.</p>
+<div class="paragraph">
+<p>Imaginamos un programa que compara que la diferencia entre 2 números sea menor a un valor determinado, un típico ejemplo de monitoreo. Tendríamos un código en Java como el siguiente:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>if ((a - b) &lt; c) {
+
+    print ("El valor está dentro de los parámetros");
+
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En este caso, para una cuestión de monitoreo, el código contiene un error. El valor c debería compararse con el valor absoluto de la diferencia en a y b. Ya que, si b es mayor que a, pero aun dentro del rango, el número sea negativo, pero para el negocio estará correcto. Esto dependerá enteramente de los valores de entrada y no será encontrado necesariamente recorriendo todos los caminos del programa.</p>
+</div>
+<div class="paragraph">
+<p>Como conclusión, podemos decir que a pesar de que la prueba exhaustiva de entradas es superior a la prueba exhaustiva de caminos, ninguna es suficiente para asegurar el buen funcionamiento del programa. Para obtener un buen software necesitaremos una forma de combinar ambas estrategias: la de caja negra y la blanca.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_historias_de_usuario">4. Historias de usuario</h3>
+<div class="paragraph">
+<p>¿Qué son las Historias de Usuarios?</p>
+</div>
+<div class="paragraph">
+<p>Antes de seguir adelante, queremos hacer foco en este concepto clave en la metodología de pruebas de sistemas.</p>
+</div>
+<div class="paragraph">
+<p>Definición: una Historia de Usuario es una forma de especificación de requerimientos muy utilizada hoy en día. Es una forma corta y con pocos detalles de implementación, está más centrada en el usuario.</p>
+</div>
+<div class="paragraph">
+<p>Se escribe de esta forma:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Como &lt;ROL&gt; quiero &lt;Funcionalidad&gt; para &lt;Valor de negocio&gt;</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Esto nos permite saber qué usuario utilizará esa funcionalidad, qué es lo que quiere hacer el usuario y además nos da un valor de negocio para ayudarnos a priorizar las funcionalidades.</p>
+</div>
+<div class="paragraph">
+<p>En el capítulo 5, podrás conocer en detalle la plantilla de Historias de usuario. Pero, ahora continuemos con otras características:</p>
+</div>
+<div class="paragraph">
+<p>Las Historias de Usuario además tienen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>los llamados <strong>criterios de aceptación</strong>, que son criterios que nuestro usuario final utilizará para determinar si aceptará o no una funcionalidad desarrollada.</p>
+</li>
+<li>
+<p>Se pueden agregar <strong>notas</strong>, lo que permitirá agregar aun más información a la Historia de Usuario que no necesariamente se expresa en los criterios de aceptación.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>Ejemplo de Historia de Usuario</p>
+</div>
+<div class="paragraph">
+<div class="title">Generar estadistica de Consumos de agua por periodo</div>
+<p>Como Responsable de Medicion quiero generar reportes estadisticos de consumo para analizar el uso del servicio de agua por parte de los clientes.</p>
+</div>
+<div class="paragraph">
+<p>Nota 1: Los reportes estadísticos pueden ejecutarse por periodo, por zona y localidad.</p>
+</div>
+<div class="paragraph">
+<p>Nota 2: En la salida deben mostrarse m3 consumidos por periodo, zona y localidad.</p>
+</div>
+<div class="paragraph">
+<p>Nota 3: El periodo no puede ser nulo.</p>
+</div>
+<div class="paragraph">
+<p>Nota 4: Los campos Localidad y Zona pueden dejarse vacios, se consideraran en el reporte en ese caso TODAS las Zonas o TODAS las Localidades.</p>
+</div>
+<div class="paragraph">
+<p>Nota 5: El reporte puede descargarse en formato PDF, xls o xlsx.</p>
+</div>
+<div class="paragraph">
+<p>Podemos ver que tenemos que desarrollar una funcionalidad para generar estadísticas de consumo del agua de nuestros clientes por un período determinado de tiempo. Para poder desarrollar esta funcionalidad necesitaremos hablar con nuestro cliente y pedir más información, pero de eso se tratan las Historias de Usuario.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_modelo_de_plantilla_de_historias_de_usuario">5. Modelo de plantilla de Historias de Usuario</h3>
+<div class="paragraph">
+<p>La frase "Como &lt;ROL&gt; quiero &lt;Funcionalidad&gt; para &lt;Valor de negocio&gt;" es una plantilla utilizada en el contexto de la metodología ágil, particularmente en la metodología Scrum.</p>
+</div>
+<div class="paragraph">
+<p>Esta plantilla se utiliza para definir y estructurar las historias de usuario, que son una forma de expresar requisitos de software de una manera que sea fácil de entender y priorizar.</p>
+</div>
+<div class="paragraph">
+<p>La plantilla se completa de la siguiente manera:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&lt;ROL&gt;: Aquí se especifica el rol del usuario o persona que necesita una funcionalidad o característica en el software. Puede ser un usuario real, como un cliente o un miembro del equipo, y a menudo se describe de manera específica. Por ejemplo, "Como cliente" o "Como administrador del sistema".</p>
+</li>
+<li>
+<p>&lt;Funcionalidad&gt;: En esta parte, se describe de manera concisa la funcionalidad o característica que el usuario o rol desea. Esto debe ser claro y específico, y debe ser una descripción breve de lo que se necesita.</p>
+</li>
+<li>
+<p>&lt;Valor de negocio&gt;: Aquí se indica por qué el usuario o el rol necesita esa funcionalidad. Se relaciona con el beneficio que se obtendrá al implementar esta característica. Puede ser un valor para el negocio, como aumentar la eficiencia, mejorar la experiencia del usuario o cumplir con un requisito legal.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<div class="title">Un ejemplo de historia de usuario utilizando esta plantilla podría ser:</div>
+<blockquote>
+<div class="paragraph">
+<p>"Como cliente, quiero poder realizar compras en línea (funcionalidad) para facilitar la adquisición de productos y mejorar la conveniencia (valor de negocio)."</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Esta plantilla facilita la comunicación y la priorización de requisitos en proyectos ágiles. Ayuda a las personas involucradas en el desarrollo de software a comprender:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>quién necesita</p>
+</li>
+<li>
+<p>qué necesita,</p>
+</li>
+<li>
+<p>por qué lo necesita y,</p>
+</li>
+<li>
+<p>cómo puede proporcionar valor al negocio o a los usuarios.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_pruebas_de_usuario">6. Pruebas de usuario</h3>
+<div class="paragraph">
+<p>Las historias de usuario cuentan con pruebas de usuario que no deben confundirse con casos de prueba, ya que estos, entre otras características son documentos que describen de manera detallada cómo se probará una funcionalidad o característica específica del software. El propósito principal de los casos de prueba es verificar que una parte específica del software funcione según lo previsto.</p>
+</div>
+<div class="paragraph">
+<p>Y… entonces ¿Qué son las pruebas de usuario?</p>
+</div>
+<div class="paragraph">
+<p>Definición:  las pruebas de usuario son pruebas rápidas sin especificar del todo que nuestro usuario final o cliente utilizará para determinar si los criterios de aceptación se cumplen, y por tanto se va a aceptar la Historia de Usuario.</p>
+</div>
+<div class="paragraph">
+<p>Esa lista no es exhaustiva y puede ser bastante corta.</p>
+</div>
+<div class="paragraph">
+<p>Ampliemos el concepto de pruebas de usuario</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Son una fase más amplia del proceso de aseguramiento de calidad que se centra en la validación de todo el sistema desde la perspectiva del usuario final.</p>
+</li>
+<li>
+<p>Las pruebas de usuario evalúan si el software satisface las necesidades y expectativas de los usuarios.</p>
+</li>
+<li>
+<p>Pueden incluir casos de prueba, pero también pueden abarcar escenarios más amplios, como pruebas de aceptación del usuario (UAT), pruebas de usabilidad y pruebas de rendimiento.</p>
+</li>
+<li>
+<p>Se centran en la experiencia del usuario final y la satisfacción del cliente.</p>
+</li>
+<li>
+<p>Se centran en la validación desde la perspectiva del usuario final.</p>
+</li>
+<li>
+<p>Se evalúa si el software es fácil de usar, cumple con las expectativas del usuario y satisface las necesidades del negocio.</p>
+</li>
+<li>
+<p>Como las pruebas de aceptación del usuario (UAT), generalmente se realizan en una etapa posterior del proceso de desarrollo, cuando el software está cerca de estar listo para su implementación.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_semana_4_clase_sincrónica">Semana 4 - Clase Sincrónica</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -2076,7 +2471,7 @@ assertEquals(15,sumar(a,b));</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-04-20 23:14:57 UTC
+Last updated 2026-04-21 14:47:31 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
