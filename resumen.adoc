@@ -1010,6 +1010,121 @@ Ampliemos el concepto de pruebas de usuario
 * Se evalúa si el software es fácil de usar, cumple con las expectativas del usuario y satisface las necesidades del negocio.
 * Como las pruebas de aceptación del usuario (UAT), generalmente se realizan en una etapa posterior del proceso de desarrollo, cuando el software está cerca de estar listo para su implementación.
 
+---
+
+*Ejemplo de pruebas de usuario*
+
+Empresa potabilizadora de agua
+
+Presentamos, a modo de ejemplo, el caso de una Empresa potabilizadora de agua que requiere desarrollar un producto de software que permita gestionar la prestación del servicio de agua potable en las diferentes localidades. Podrán analizar el caso completo en el documento descargable al final de esta página, pero observemos cómo se vería la tabla con las pruebas de usuario, a partir de la Historia de usuario presentada en páginas anteriores:
+
+Pruebas de Usuario
+
+* Probar visualizar reporte para un período existente, para una única zona y localidad (pasa)
+* Probar visualizar reporte para un período existente, para todas las zonas y localidades (pasa)
+* Probar visualizar reporte para un período a futuro (falla)
+* Probar visualizar reporte sin loguearse como Responsable de Medición (falla)
+* Probar visualizar reporte para un período sin consumos (pasa)
+* Probar visualizar reporte para una localidad inexistente (falla)
+
+=== 7. Pruebas de caja negra
+
+La estrategia de caja negra será el foco de esta semana. Se recomienda utilizar esta estrategia para probar que el programa funcione bien y de acuerdo a las especificaciones. Con esta estrategia realizaremos verificación del software y, hasta cierto punto, validación.
+
+Es importante destacar que la validación utilizando pruebas de caja negra solo es tan efectiva como bien hechos estén los requerimientos. Es decir, si los requerimientos fueron mal detallados por el analista, la verificación será nula. Pero si los requerimientos fueron validados y son correctos, entonces tendremos un grado alto de validación con este método.
+
+En esta materia veremos 4 métodos de caja negra:
+
+* Partición en clases de equivalencia
+* Análisis de valores límites
+* Gráficos de causa-efecto
+* Adivinación del error
+
+Los dos primeros métodos se estudiarán en profundidad y serán el foco de la semana.
+
+Los dos últimos serán mencionados y explicados de forma rápida debido a que requieren tiempo de experiencia para ser efectivos o conocimientos que no corresponden con los de un técnico superior en desarrollo de software.
+
+=== 8. Partición en clases de equivalencias
+
+Hemos dicho anteriormente que un buen caso de prueba es uno que tiene una alta probabilidad de encontrar un defecto. También hemos establecido que una prueba exhaustiva de entradas es imposible. Es decir, que estamos limitados a un pequeño subconjunto de posibles entradas.
+
+Lo que nosotros queremos es seleccionar el subconjunto correcto de entradas para lograr la mayor probabilidad de encontrar errores.
+
+Una forma de encontrar este subconjunto es notar que un caso de prueba bien confeccionado debe tener 2 propiedades:
+
+. Reducir significativamente la cantidad de casos de prueba necesarios para cumplir el objetivo de una cantidad de pruebas “razonable”.
+. Cubrir un gran conjunto de otros casos de prueba posibles. Es decir, nos dice algo sobre la presencia o ausencia de errores más allá de las entradas específicas que se usan en el mismo.
+
+Si bien estas propiedades pueden parecer similares, describen 2 consideraciones muy diferentes:
+
+* La primera consideración implica que cada caso de prueba debe tener en cuenta tantas entradas diferentes como sea posible para minimizar la cantidad total de casos de prueba.
+* La segunda implica que deberíamos considerar partir el dominio del programa en un número finito de clases de equivalencia, de forma que podamos asumir (aunque nunca estaremos absolutamente seguros) que una prueba de un valor representativo de una clase es equivalente a probar cualquier otro valor de esa misma clase.
+
+*Una clase de equivalencia es un conjunto de entradas que se comportan igual, por lo que alcanza con probar una sola.*
+
+.En conclusión
+* si la prueba de una clase de equivalencia detecta un error, todos los otros casos de prueba en esa clase de equivalencia deberían tener el mismo error.
+* si un caso de prueba no detecta un error para una clase, podríamos esperar que ningún caso de prueba de esa misma clase contenga errores.
+
+Las 2 consideraciones mencionadas anteriormente, se unen para formar un método de prueba de caja negra llamado partición de equivalencias:
+
+* La segunda consideración se utiliza para confeccionar un conjunto de condiciones interesantes para probar.
+* La primera consideración se utiliza para confeccionar un conjunto mínimo de casos de prueba cubriendo estas condiciones.
+
+.Un ejemplo de una clase de equivalencia
+____
+En el programa que valida un número del 1 al 10 de la introducción, sería decir “cualquier número entero mayor o igual a 1 y menor o igual a 10”. Al identificar esta clase de equivalencia, lo que queremos decir es que si no se encuentra ningún error con un caso de prueba que está probando un elemento cualquiera de esa condición, por ejemplo el número 2, entonces es poco probable que encontremos un error probando otro elemento del conjunto, como por ejemplo, el número 5.
+____
+
+En otras palabras: Nuestro tiempo de testing valdría más invirtiéndolo probando otras clases de equivalencia.
+
+El diseño de casos de prueba utilizando partición de equivalencias tiene dos pasos:
+
+. Identificación de las clases de equivalencia.
+. Definición de los casos de prueba.
+
+Es importante notar que, si bien este método es ampliamente superior a probar casos de prueba al azar, aún tiene sus problemas. Uno de los mayores es que no prueba necesariamente los escenarios con mayor rendimiento de errores.
+
+==== 8.1 Paso 1: Identificación de las clases de equivalencia
+
+Las clases de equivalencia se identifican tomando las condiciones de entrada (normalmente una sentencia o comentario en la especificación) y partirlo en 2 o más grupos. Se puede utilizar la tabla que se muestra a continuación para lograr esto.
+
+Es importante notar que hay 2 tipos de clases de equivalencias: clases válidas y clases inválidas.
+
+* Las clases válidas representan entradas que el programa debería considerar válidas (en el ejemplo del validador, la clase que identificamos “cualquier número entero mayor o igual a 1 y menor o igual a 10”).
+* Las clases inválidas representan aquellas entradas que causan cualquier otro posible estado de la condición, es decir, valores incorrectos o erróneos (en el ejemplo del validador, podríamos tener la clase “números enteros menores a 1”).
+
+En este método hacemos foco en el principio 5 que vimos en la semana 1, que establece que debemos hacer foco también en las condiciones inválidas o inesperadas, las cuales iremos registrando en una tabla como la siguiente:
+
+.Clases de equivalencia
+image::clases_equivalencia_tabla.png[]
+
+Dada una salida con condición externa, identificar las clases de equivalencia es mayormente un proceso heurístico. Se pueden seguir los siguientes consejos:
+
+. Si una condición de entrada identifica un rango de valores, se identifica una clase válida y 2 clases inválidas. En el ejemplo del campo validador tenemos la válida mencionada antes y las 2 inválidas “números menores a uno” y “números mayores a 10”.
+
+. Si una condición de entrada identifica una cantidad de valores a ingresar, entonces identificamos una clase válida y al menos 2 inválidas.
+
++
+[destacar]
+Analicemos con un ejemplo. Si evaluamos un juego multijugador que se juega con 2 a 4 jugadores donde cada jugador tiene su nombre de usuario y un contador de partidas jugadas, una clase válida es “cantidad de jugadores igual o mayor a 2 e igual o menor a 4”. Mientras que las clases inválidas son “menos de 2 jugadores” y “más de 4 jugadores”.
+
+. Si una condición de entrada especifica una serie de valores y hay alguna razón para creer que el programa los maneja de forma diferente, entonces identificamos una clase válida para cada opción y una clase inválida para cualquier otro valor.
+
++
+Comprendamos el tercer consejo con el ejemplo.
+
++
+[destacar]
+Si consideramos los envíos de Mercado Libre como un ejemplo, podemos identificar “Envío a domicilio” y “Retiro en sucursal” como una clase válida y “Cualquier otro valor” para una clase inválida. Esto se debe a que cuando seleccionamos “Envío a domicilio” debemos ingresar a qué domicilio enviar y Mercado Libre nos muestra una serie de opciones, pero el “Retiro en sucursal” nos muestra una serie de opciones diferentes. Como la selección solo puede tener uno de esos 2 valores, entonces cualquier otra cosa es una clase inválida.
+
+. Si una condición de entrada especifica algo obligatorio, entonces debe haber una clase válida para cualquier entrada que cumpla ese criterio y una clase inválida para cualquier entrada que no lo cumpla.
+
++
+[destacar]
+En el ejemplo de una contraseña de usuario, podemos tener una clase válida que sea “cadena de caracteres de entre 8 a 16 caracteres con al menos una letra mayúscula y una letra minúscula” y una clase inválida que sea “cadena de caracteres que no cumple con el formato”.
+
+Si tenemos un motivo para creer que el software no manejará de la misma manera distintos elementos de una clase de equivalencia, entonces debemos partir esa clase de equivalencia en otras clases más pequeñas que abarquen menos información.
 
 == Semana 4 - Clase Sincrónica
 
