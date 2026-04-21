@@ -787,6 +787,230 @@ Se tienen muchos tipos de pruebas distintos que permiten asegurar una calidad m�
 
 . *Test de aceptación:* Este test es ejecutado por la organización que solicita el sistema. El sistema es probado en un entorno real, usualmente llamado Alfa. Genera la aceptación o no del sistema. Cuando no hay un usuario que solicita el producto, se usan las pruebas Beta, que son encargadas a clientes selectos antes de liberar la versión.
 
+
+== Semana 2
+
+=== 1. Introducción
+
+.Introducción a las estrategias de testing
+
+Si recordamos la definición de testing que vimos la semana anterior, veremos que la siguiente pregunta que se nos viene a la cabeza es:
+
+[quote]
+____
+¿Podemos encontrar absolutamente todos los errores y defectos de un software?
+____
+
+La respuesta a esta pregunta es no, incluso para programas triviales. En general es imposible encontrar todos los errores de un programa ya que requeriríamos tiempo y dinero casi infinito para lograrlo. Como no contamos con recursos infinitos, como testers queremos encontrar la mayor cantidad de errores con la menor cantidad de recursos posibles.
+
+Para lograr este objetivo debemos utilizar distintas estrategias para diseñar los casos de prueba. Las dos estrategias más comunes para lograr este objetivo son la estrategia de caja negra y la estrategia de caja blanca.
+
+Es importante notar que cuando hablamos de las estrategias de pruebas, hablamos de un enfoque dinámico del testing, ya que nos ayudarán a diseñar casos de prueba que luego deberemos ejecutar para encontrar errores.
+
+=== 2. Estrategia de caja negra
+
+Definición: Esta estrategia de testing ve al programa como una caja negra, donde el comportamiento interno del software y su estructura no es importante. En vez de eso, se concentra en encontrar las circunstancias en las cuales un software no se comporta según su especificación.
+
+Con esta estrategia, la información de entrada de los casos de prueba se deriva únicamente de las especificaciones de requerimientos. Es decir, sin tener la ventaja del conocimiento de la estructura interna del programa.
+
+.Caja negra
+image::caja_negra.png[]
+
+Figura 1: representación gráfica de caja negra
+
+==== 2.1 Caja negra: pruebas exhaustivas de entradas
+
+Si se quiere encontrar absolutamente todos los errores del programa usando esta estrategia, entonces la respuesta es probar con una cantidad exhaustiva de entradas. Esto quiere decir no sólo usar todas las entradas válidas, sino todas las entradas posibles.
+
+===== Caso de prueba 1: Un valor numérico
+
+En el caso de un campo que debería tomar un valor numérico, deberíamos probarlo con todos los posibles valores desde el 0 hasta el número más grande que permita el lenguaje, pero también con todos los valores posibles inválidos, todas las letras, combinaciones de letras y combinaciones de letras y números permitidas por el lenguaje de programación. Notaremos entonces, que para un solo campo esta es una cantidad casi infinita de casos de prueba. Aún más si pensamos que ningún programa en realidad tiene un solo campo, sino que tiene una combinación de entradas posibles.
+
+===== Caso de prueba 2: Compilador de C++
+
+Si el caso de prueba 1 suena difícil, imagina la prueba exhaustiva de programas más grandes y complejos.
+
+Considerando un compilador de C++, no sólo tendríamos que crear casos de prueba representando todos los programas válidos de C++ (un número casi infinito), sino que además tendríamos que considerar todos los programas inválidos de C++ (un número definitivamente infinito) para asegurarnos que el compilador detecte que son inválidos. Esto último es para probar que el compilador no haga algo que no debe hacer, compilar un programa sintácticamente incorrecto; tal como vimos en los principios de la semana 1.
+
+El problema se vuelve aún más grande y complicado para el software transaccional que utiliza bases de datos.
+
+Tomemos de ejemplo de un software de reservas de vuelos de una aerolínea, estas transacciones no sólo dependen de las entradas de un caso en particular, sino también de lo que ocurrió anteriormente. Si ya hay asientos reservados en un vuelo, no podemos permitir que se vuelvan a reservar. Es decir que no sólo debemos probar todas las transacciones válidas e inválidas, sino que tenemos que pensar en todas las posibles secuencias de transacciones.
+
+Podríamos seguir listando situaciones cada vez más complejas, pero el punto de la discusión es que la prueba exhaustiva es imposible. Podemos definir entonces 2 implicaciones:
+
+. No podemos probar un software para garantizar que esté libre de errores (como habíamos visto en la semana 1).
+. Una consideración fundamental a la hora de probar, es la económica.
+
+Por lo tanto, no hay lugar para la prueba exhaustiva.
+
+El objetivo debería ser aumentar el rendimiento del testing maximizando el número de errores encontrado por un número finito de casos de prueba. Una parte de esto implica mirar el código y asumir algunas cosas respecto al software (en el ejemplo del campo que toma un valor numérico del 1 al 10, asumir que el número 1, 2 y 3 tendrán los mismos resultados).
+
+
+=== 3. Estrategia de caja blanca
+
+Definición:  esta estrategia de testing ve el programa como una caja blanca, es decir que examina la estructura interna de un programa. Esta estrategia deriva casos de prueba a partir de la lógica del software, desafortunadamente ignorando la especificación de requerimientos.
+
+.Caja blanca
+image::caja_blanca.png[]
+
+Figura 1: representación gráfica de caja blanca
+
+El objetivo es, entonces, establecer una estrategia análoga a la prueba de entradas que mencionamos en la caja negra.
+
+Queremos causar que cada declaración en el programa se ejecute al menos una vez, pero no es difícil mostrar que esto será extremadamente complejo e inadecuado.
+
+Se suele considerar que si ejecutamos todos los posibles flujos de control del software, entonces ese software se ha probado por completo.
+
+==== 3.1 Falla 1: Caminos lógicos grandes
+
+Una de las fallas en la forma de pensar la estrategia de caja blanca es que el número de caminos lógicos de un programa puede ser astronómicamente grande.
+
+Para ilustrar esto, consideremos la figura 1 que se muestra debajo:
+
+.Diagrama de control de caminos de un programa pequeño
+image::caminos_logicos.png[]
+
+Figura: Diagrama de control de caminos de un programa pequeño
+
+Esta sería una representación de un programa trivial, es un diagrama de control de flujo del programa.
+
+. Cada nodo o círculo representa una declaración que se ejecuta de forma secuencial, posiblemente modificándose aún más.
+. Cada arco representa la transferencia de control entre las declaraciones. El diagrama representa entonces entre 10 a 20 declaraciones de tipo FOR o WHILE que puede iterar hasta 20 veces.
+. Dentro de cada declaración de tipo loop puede haber declaraciones de tipo IF.
+. Determinar el número único de caminos, entonces, es equivalente a determinar la cantidad de formas únicas de moverse del punto a al punto b (asumiendo que las decisiones del software son independientes entre sí). Este número puede ser de más de 100 trillones de caminos.
+
+.En resumen
+Con números tan altos no es difícil visualizar estos números, así que lo pongamos en una forma más concreta. Si pudiéramos escribir, ejecutar y verificar cada caso de prueba en 5 minutos, nos tomaría aproximadamente 100.000 millones de años probar cada camino. Si pudiéramos escribir, ejecutar y verificar cada caso de prueba en 1 segundo, nos tomaría 3.2 millones de años.
+
+Por supuesto, las decisiones en un software real no son independientes entre sí. Es decir que el número posible de caminos ejecutables sería bastante menor.
+
+Por otro lado, los programas reales suelen ser bastante más complejos que el programa que se muestra en la figura 1. Es decir, la prueba exhaustiva de caminos, al igual que la prueba exhaustiva de entradas, parece cada vez más impráctica, si no imposible.
+
+==== 3.2. Falla 2: pruebo todos los caminos, entonces la prueba está completa.
+
+La segunda falla con la forma de pensar “si pruebo todos los caminos internos del software entonces la prueba esta completa” es que cada camino de ejecución del software puede probarse, pero el software aun así puede contener defectos.
+
+Existen 3 motivos para esto:
+
+. Una prueba exhaustiva de caminos no garantiza que el programa cumpla con su especificación.
+
++
+Consideremos como ejemplo una rutina que ordene legajos de estudiantes por año de ingreso de los más nuevos a los más viejos. Si por error programamos una rutina que los ordene de forma inversa, la prueba exhaustiva de caminos nos aportará poco valor al error a encontrar. Podemos ordenar de forma perfecta a todos los estudiantes, pero ese software tiene un error fundamental: No es el software que se necesita. No cumple con sus especificaciones. La prueba de caminos no encontrará jamás este gran problema.
+
+. Un programa puede estar erróneo porque falta programar algunos caminos. La prueba exhaustiva de caminos no descubrirá este problema.
+
++
+Si consideramos el software académico que discutíamos en el punto 1, si deberíamos poder buscar un alumno por legajo y eso se hace bien, podría faltar el camino del error. ¿Qué ocurre cuando no se encuentra un alumno? Este camino podría faltar porque el desarrollador no lo consideró, y una prueba exhaustiva de caminos nunca detectaría la falta de este camino en particular.
+
+. Una prueba de caminos exhaustiva puede no descubrir errores dados por los datos. Hay muchos ejemplos de este tipo de problemas.
+
++
+Imaginamos un programa que compara que la diferencia entre 2 números sea menor a un valor determinado, un típico ejemplo de monitoreo. Tendríamos un código en Java como el siguiente:
+
+----
+if ((a - b) < c) {
+
+    print ("El valor está dentro de los parámetros");
+
+}
+----
+
+En este caso, para una cuestión de monitoreo, el código contiene un error. El valor c debería compararse con el valor absoluto de la diferencia en a y b. Ya que, si b es mayor que a, pero aun dentro del rango, el número sea negativo, pero para el negocio estará correcto. Esto dependerá enteramente de los valores de entrada y no será encontrado necesariamente recorriendo todos los caminos del programa.
+
+Como conclusión, podemos decir que a pesar de que la prueba exhaustiva de entradas es superior a la prueba exhaustiva de caminos, ninguna es suficiente para asegurar el buen funcionamiento del programa. Para obtener un buen software necesitaremos una forma de combinar ambas estrategias: la de caja negra y la blanca.
+
+=== 4. Historias de usuario
+
+¿Qué son las Historias de Usuarios?
+
+Antes de seguir adelante, queremos hacer foco en este concepto clave en la metodología de pruebas de sistemas.
+
+Definición: una Historia de Usuario es una forma de especificación de requerimientos muy utilizada hoy en día. Es una forma corta y con pocos detalles de implementación, está más centrada en el usuario.
+
+Se escribe de esta forma:
+
+[quote]
+____
+Como <ROL> quiero <Funcionalidad> para <Valor de negocio>
+____
+
+Esto nos permite saber qué usuario utilizará esa funcionalidad, qué es lo que quiere hacer el usuario y además nos da un valor de negocio para ayudarnos a priorizar las funcionalidades.
+
+En el capítulo 5, podrás conocer en detalle la plantilla de Historias de usuario. Pero, ahora continuemos con otras características:
+
+Las Historias de Usuario además tienen:
+
+* los llamados *criterios de aceptación*, que son criterios que nuestro usuario final utilizará para determinar si aceptará o no una funcionalidad desarrollada.
+* Se pueden agregar *notas*, lo que permitirá agregar aun más información a la Historia de Usuario que no necesariamente se expresa en los criterios de aceptación.
+
+---
+
+Ejemplo de Historia de Usuario
+
+.Generar estadistica de Consumos de agua por periodo
+
+Como Responsable de Medicion quiero generar reportes estadisticos de consumo para analizar el uso del servicio de agua por parte de los clientes.
+
+Nota 1: Los reportes estadísticos pueden ejecutarse por periodo, por zona y localidad.
+
+Nota 2: En la salida deben mostrarse m3 consumidos por periodo, zona y localidad.
+
+Nota 3: El periodo no puede ser nulo.
+
+Nota 4: Los campos Localidad y Zona pueden dejarse vacios, se consideraran en el reporte en ese caso TODAS las Zonas o TODAS las Localidades.
+
+Nota 5: El reporte puede descargarse en formato PDF, xls o xlsx.
+
+Podemos ver que tenemos que desarrollar una funcionalidad para generar estadísticas de consumo del agua de nuestros clientes por un período determinado de tiempo. Para poder desarrollar esta funcionalidad necesitaremos hablar con nuestro cliente y pedir más información, pero de eso se tratan las Historias de Usuario.
+
+
+=== 5. Modelo de plantilla de Historias de Usuario
+
+La frase "Como <ROL> quiero <Funcionalidad> para <Valor de negocio>" es una plantilla utilizada en el contexto de la metodología ágil, particularmente en la metodología Scrum.
+
+Esta plantilla se utiliza para definir y estructurar las historias de usuario, que son una forma de expresar requisitos de software de una manera que sea fácil de entender y priorizar.
+
+La plantilla se completa de la siguiente manera:
+
+* <ROL>: Aquí se especifica el rol del usuario o persona que necesita una funcionalidad o característica en el software. Puede ser un usuario real, como un cliente o un miembro del equipo, y a menudo se describe de manera específica. Por ejemplo, "Como cliente" o "Como administrador del sistema".
+
+* <Funcionalidad>: En esta parte, se describe de manera concisa la funcionalidad o característica que el usuario o rol desea. Esto debe ser claro y específico, y debe ser una descripción breve de lo que se necesita.
+
+* <Valor de negocio>: Aquí se indica por qué el usuario o el rol necesita esa funcionalidad. Se relaciona con el beneficio que se obtendrá al implementar esta característica. Puede ser un valor para el negocio, como aumentar la eficiencia, mejorar la experiencia del usuario o cumplir con un requisito legal.
+
+.Un ejemplo de historia de usuario utilizando esta plantilla podría ser:
+____
+"Como cliente, quiero poder realizar compras en línea (funcionalidad) para facilitar la adquisición de productos y mejorar la conveniencia (valor de negocio)."
+____
+
+Esta plantilla facilita la comunicación y la priorización de requisitos en proyectos ágiles. Ayuda a las personas involucradas en el desarrollo de software a comprender:
+
+* quién necesita
+* qué necesita,
+* por qué lo necesita y,
+* cómo puede proporcionar valor al negocio o a los usuarios.
+
+=== 6. Pruebas de usuario
+
+Las historias de usuario cuentan con pruebas de usuario que no deben confundirse con casos de prueba, ya que estos, entre otras características son documentos que describen de manera detallada cómo se probará una funcionalidad o característica específica del software. El propósito principal de los casos de prueba es verificar que una parte específica del software funcione según lo previsto.
+
+Y… entonces ¿Qué son las pruebas de usuario?
+
+Definición:  las pruebas de usuario son pruebas rápidas sin especificar del todo que nuestro usuario final o cliente utilizará para determinar si los criterios de aceptación se cumplen, y por tanto se va a aceptar la Historia de Usuario.
+
+Esa lista no es exhaustiva y puede ser bastante corta.
+
+Ampliemos el concepto de pruebas de usuario
+
+* Son una fase más amplia del proceso de aseguramiento de calidad que se centra en la validación de todo el sistema desde la perspectiva del usuario final.
+* Las pruebas de usuario evalúan si el software satisface las necesidades y expectativas de los usuarios.
+* Pueden incluir casos de prueba, pero también pueden abarcar escenarios más amplios, como pruebas de aceptación del usuario (UAT), pruebas de usabilidad y pruebas de rendimiento.
+* Se centran en la experiencia del usuario final y la satisfacción del cliente.
+* Se centran en la validación desde la perspectiva del usuario final.
+* Se evalúa si el software es fácil de usar, cumple con las expectativas del usuario y satisface las necesidades del negocio.
+* Como las pruebas de aceptación del usuario (UAT), generalmente se realizan en una etapa posterior del proceso de desarrollo, cuando el software está cerca de estar listo para su implementación.
+
+
 == Semana 4 - Clase Sincrónica
 
 === Bug Advocacy
