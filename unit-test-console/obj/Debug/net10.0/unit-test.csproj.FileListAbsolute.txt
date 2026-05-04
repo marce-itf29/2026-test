@@ -1,0 +1,15 @@
+C:\documents-personal\terciario\2026-test\unit-test\bin\Debug\net10.0\unit-test.exe
+C:\documents-personal\terciario\2026-test\unit-test\bin\Debug\net10.0\unit-test.deps.json
+C:\documents-personal\terciario\2026-test\unit-test\bin\Debug\net10.0\unit-test.runtimeconfig.json
+C:\documents-personal\terciario\2026-test\unit-test\bin\Debug\net10.0\unit-test.dll
+C:\documents-personal\terciario\2026-test\unit-test\bin\Debug\net10.0\unit-test.pdb
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.GeneratedMSBuildEditorConfig.editorconfig
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.AssemblyInfoInputs.cache
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.AssemblyInfo.cs
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.csproj.CoreCompileInputs.cache
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.sourcelink.json
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.dll
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\refint\unit-test.dll
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.pdb
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\unit-test.genruntimeconfig.cache
+C:\documents-personal\terciario\2026-test\unit-test\obj\Debug\net10.0\ref\unit-test.dll
